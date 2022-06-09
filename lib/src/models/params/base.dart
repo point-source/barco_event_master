@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:barco_event_master/src/models/request.dart';
+import 'package:barco_event_master/src/models/event_master_request.dart';
 
 abstract class BaseEventMasterParam {
   /// The name of the method to invoke on the remote event master system

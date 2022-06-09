@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 
-import 'package:barco_event_master/src/models/request.dart';
-import 'package:barco_event_master/src/models/response.dart';
+import 'package:barco_event_master/src/models/event_master_request.dart';
+import 'package:barco_event_master/src/models/event_master_response.dart';
 
 class EventMaster {
   EventMaster({
