@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "name": "Example",
+            "type": "dart",
+            "request": "launch",
+            "program": "example/barco_event_master_example.dart"
+        }
+    ]
+}
