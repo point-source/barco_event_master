@@ -1,16 +1,16 @@
 import 'dart:convert';
 
-class EventMasterResponse {
+class EventMasterResponse<T> {
   /// The data returned by the invoked method. If an error occurred while
   /// invoking the method, this value must be null.
-  EventMasterResult? result;
+  final EventMasterResult<T>? result;
 
   /// A specified error code if there was an error invoking the method, otherwise null.
-  String? error;
+  final String? error;
 
   /// A value used to match the response with the request to which it is replying.
   /// The receiver of the request must reply with a valid response to all received requests.
-  String id;
+  final String id;
 
   EventMasterResponse({
     this.result,
@@ -18,24 +18,16 @@ class EventMasterResponse {
     required this.id,
   });
 
-  EventMasterResponse copyWith({
-    EventMasterResult? result,
+  EventMasterResponse<T2> copyWith<T2>({
+    EventMasterResult<T2>? result,
     String? error,
     String? id,
   }) {
-    return EventMasterResponse(
-      result: result ?? this.result,
+    return EventMasterResponse<T2>(
+      result: result ?? this.result?.copyWith<T2>(),
       error: error ?? this.error,
       id: id ?? this.id,
     );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'result': result?.toMap(),
-      'error': error,
-      'id': id,
-    };
   }
 
   factory EventMasterResponse.fromMap(Map<String, dynamic> map) {
@@ -46,48 +38,29 @@ class EventMasterResponse {
     );
   }
 
-  String toJson() => json.encode(toMap());
-
   factory EventMasterResponse.fromJson(String source) =>
       EventMasterResponse.fromMap(json.decode(source));
 
   @override
   String toString() =>
       'EventMasterResponse(result: $result, error: $error, id: $id)';
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-
-    return other is EventMasterResponse &&
-        other.result == result &&
-        other.error == error &&
-        other.id == id;
-  }
-
-  @override
-  int get hashCode => result.hashCode ^ error.hashCode ^ id.hashCode;
 }
 
-class EventMasterResult {
+class EventMasterResult<T> {
   EventMasterResult({
     required this.success,
     this.response,
   });
 
   /// 0=success, anything else is an error
-  int success;
-  Map<String, dynamic>? response;
+  final int success;
+  final T? response;
 
-  /// Checks the [success] variable and the [response] to determine if the request succeeded
-  bool get isSuccessful => success == 0 && response?['error'] == null;
-
-  Map<String, dynamic> toMap() {
-    return {
-      'success': success,
-      'response': response,
-    };
-  }
+  EventMasterResult<T2> copyWith<T2>({int? success, T2? response}) =>
+      EventMasterResult<T2>(
+        success: success ?? this.success,
+        response: T is T2 ? response ?? this.response as T2 : response,
+      );
 
   factory EventMasterResult.fromMap(Map<String, dynamic> map) {
     return EventMasterResult(
@@ -95,7 +68,4 @@ class EventMasterResult {
       response: map['response'],
     );
   }
-
-  factory EventMasterResult.fromJson(String source) =>
-      EventMasterResult.fromMap(json.decode(source));
 }

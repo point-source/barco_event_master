@@ -13,7 +13,6 @@ dart_code_metrics:
     - "**/*.freezed.dart"
   anti-patterns:
     - long-method
-    - long-parameter-list
   metrics:
     cyclomatic-complexity: 20
     maximum-nesting-level: 5

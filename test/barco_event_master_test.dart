@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:barco_event_master/barco_event_master.dart';
 import 'package:test/test.dart';
 
@@ -8,7 +6,7 @@ void main() {
     late EventMaster em;
 
     setUp(() {
-      em = EventMaster(address: InternetAddress('127.0.0.1'));
+      em = EventMaster(ipAddress: '127.0.0.1');
     });
 
     test('Check initialization', () {

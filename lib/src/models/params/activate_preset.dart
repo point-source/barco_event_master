@@ -1,47 +1,36 @@
-import 'dart:convert';
+import 'package:barco_event_master/barco_event_master.dart';
 
-import 'package:barco_event_master/src/models/params/base.dart';
+extension ActivatePreset on EventMaster {
+  /// Recall a Preset on the Event Master processor. User can recall Preset with id,
+  /// Preset serial number, or Preset name.
+  ///
+  /// Must specify one of: [presetId], [presetName], [presetSerialNumber]
+  // ignore: long-parameter-list
+  Future<EventMasterResponse<Map<String, dynamic>>> activatePreset({
+    /// Preset id
+    String presetId = '',
 
-/// Recall a Preset on the Event Master processor. User can recall Preset with id,
-/// Preset serial number, or Preset name.
-///
-/// Must specify one of: [presetId], [presetName], [presetSerialNumber]
-class ActivatePresetParams extends BaseEventMasterParam {
-  ActivatePresetParams({
-    this.presetId = '',
-    this.presetName = '',
-    this.presetSerialNumber,
-    this.recallType = RecallType.preview,
-    this.operatorId = '',
-    this.password = '',
-  });
+    /// Preset name
+    String presetName = '',
 
-  @override
-  String get method => 'activatePreset';
+    /// Preset serial number
+    double? presetSerialNumber,
 
-  /// Preset id
-  String presetId;
+    /// Specifies whether the preset should be recalled to preview or program
+    RecallType recallType = RecallType.preview,
 
-  /// Preset name
-  String presetName;
+    /// Operator index (For current release only 0, 1, 2 are valid indexes).
+    /// This is only supported in Multi-Operator Mode.
+    String operatorId = '',
 
-  /// Preset serial number
-  double? presetSerialNumber;
+    /// Super user password saved. When this is passed, actions will be performed as if no
+    /// operator is enabled. This is only supported in Multi-Operator Mode.
+    String password = '',
 
-  /// Specifies whether the preset should be recalled to preview or program
-  RecallType recallType = RecallType.preview;
-
-  /// Operator index (For current release only 0, 1, 2 are valid indexes).
-  /// This is only supported in Multi-Operator Mode.
-  String operatorId;
-
-  /// Super user password saved. When this is passed, actions will be performed as if no
-  /// operator is enabled. This is only supported in Multi-Operator Mode.
-  String password;
-
-  @override
-  Map<String, dynamic> toMap() {
-    return {
+    /// ID of the request used to match the incoming response (optional)
+    String? id,
+  }) async {
+    final params = <String, Object?>{
       'type': recallType.type,
       'operatorId': operatorId,
       'password': password,
@@ -51,10 +40,13 @@ class ActivatePresetParams extends BaseEventMasterParam {
       ..addIfPresent('presetSno', presetSerialNumber)
       ..addIfPresent('operatorId', operatorId)
       ..addIfPresent('password', password);
-  }
 
-  @override
-  String toJson() => json.encode(toMap());
+    return await send(
+      method: 'activatePreset',
+      params: params,
+      id: id,
+    );
+  }
 }
 
 /// Specifies whether the preset should be recalled to preview or program
