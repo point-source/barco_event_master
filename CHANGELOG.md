@@ -1,3 +1,7 @@
+## 2.2.0
+
+- Add getInputThumbnail method
+
 ## 2.1.0
 
 - Add listSources

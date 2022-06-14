@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:barco_event_master/barco_event_master.dart';
 import 'package:test/test.dart';
@@ -39,6 +40,11 @@ void main() {
     test('listSources', () async {
       final response = await em.listSources();
       expect(response.result?.success, equals(0));
+    });
+
+    test('getInputThumbnail', () async {
+      final response = await em.getInputThumbnail(1);
+      expect(response, isA<Uint8List>());
     });
   });
 }

@@ -46,6 +46,7 @@ I am adding these as I require them. If you would like a specific one added, fee
 - [ ] mvrLayoutChange
 - [ ] listOperators
 - [ ] configureOperator
+- [x] getInputThumbnail (unofficial)
 
 ## Usage
 
