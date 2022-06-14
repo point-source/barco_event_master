@@ -15,7 +15,7 @@ class EventMaster {
 
   String get _randomId => Random().nextInt(99999).toString();
 
-  Future<EventMasterResponse<Map<String, dynamic>>> send({
+  Future<EventMasterResponse<dynamic>> send({
     required String method,
     required Map<String, dynamic> params,
     String? id,

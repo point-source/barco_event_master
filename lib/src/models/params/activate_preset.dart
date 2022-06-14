@@ -41,11 +41,13 @@ extension ActivatePreset on EventMaster {
       ..addIfPresent('operatorId', operatorId)
       ..addIfPresent('password', password);
 
-    return await send(
+    final response = await send(
       method: 'activatePreset',
       params: params,
       id: id,
     );
+
+    return response.copyWith<Map<String, dynamic>>();
   }
 }
 

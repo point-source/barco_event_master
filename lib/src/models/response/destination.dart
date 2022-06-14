@@ -85,10 +85,19 @@ class ScreenDestination {
     this.destOutMapColl = const [],
   });
 
+  /// Destination ID
   final int id;
+
+  /// Name of the destination
   final String name;
+
+  /// Horizontal size (in pixels) of the destination
   final int hSize;
+
+  /// Vertical size (in pixels) of the destination
   final int vSize;
+
+  /// Number of layers
   final int layers;
   final List<DestOutMapColl> destOutMapColl;
 
@@ -186,9 +195,17 @@ class DestOutMap {
 
   final int id;
   final String name;
+
+  /// Horizontal position (in pixels)
   final int hPos;
+
+  /// Vertical position (in pixels)
   final int vPos;
+
+  /// Horizontal size (in pixels) of the destination
   final int hSize;
+
+  /// Vertical size (in pixels) of the destination
   final int vSize;
   final int freeze;
 

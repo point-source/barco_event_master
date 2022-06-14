@@ -1,8 +1,7 @@
 import 'package:barco_event_master/barco_event_master.dart';
 
-import '../response/destination.dart';
-
 extension ListDestinations on EventMaster {
+  ///  Lists all the destinations with properties such as layers, outputs, id, size, and name.
   Future<EventMasterResponse<Destinations>> listDestinations({
     /// The type of destination to filter the query with
     DestinationType destinationType = DestinationType.all,

@@ -32,10 +32,12 @@ extension ChangeAuxContent on EventMaster {
       ..addIfPresent('PgmLastSrcIndex', programSourceIndex)
       ..addIfPresent('TestPattern', testPatternId);
 
-    return await send(
+    final response = await send(
       method: 'changeAuxContent',
       params: params,
       id: id,
     );
+
+    return response.copyWith<Map<String, dynamic>>();
   }
 }

@@ -53,7 +53,7 @@ I am adding these as I require them. If you would like a specific one added, fee
 import 'package:barco_event_master/barco_event_master.dart';
 
 Future<void> main() async {
-  final e2 = EventMaster(ipAddress: '37.101.8.90');
+  final e2 = EventMaster(ipAddress: '192.168.1.100');
 
   final r = await e2.listDestinations();
 

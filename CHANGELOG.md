@@ -1,3 +1,9 @@
+## 2.1.0
+
+- Add listSources
+- Add basic tests
+- Add more documentation
+
 ## 2.0.0
 
 - Rework requests so they return typesafe data objects

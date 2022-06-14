@@ -5,6 +5,15 @@
             "type": "dart",
             "request": "launch",
             "program": "example/barco_event_master_example.dart"
+        },
+        {
+            "name": "Tests",
+            "type": "dart",
+            "request": "launch",
+            "program": "test/barco_event_master_test.dart",
+            "env": {
+                "EVENT_MASTER_ADDRESS": "37.101.8.90"
+            }
         }
     ]
 }
