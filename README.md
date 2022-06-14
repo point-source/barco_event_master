@@ -15,7 +15,7 @@ I am adding these as I require them. If you would like a specific one added, fee
 - [ ] recallNextPreset
 - [ ] deletePreset
 - [x] listDestinations
-- [ ] listSources
+- [x] listSources
 - [ ] activateCue
 - [ ] listCues
 - [ ] activateDestGroup
