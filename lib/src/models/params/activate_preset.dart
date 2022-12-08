@@ -1,5 +1,11 @@
 import 'package:barco_event_master/barco_event_master.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 
+/// Recall a Preset on the Event Master processor. User can recall Preset with id,
+/// Preset serial number, or Preset name.
+///
+/// Must specify one of: [presetId], [presetName], [presetSerialNumber]
+// ignore: long-parameter-list
 extension ActivatePreset on EventMaster {
   /// Recall a Preset on the Event Master processor. User can recall Preset with id,
   /// Preset serial number, or Preset name.
@@ -52,6 +58,7 @@ extension ActivatePreset on EventMaster {
 }
 
 /// Specifies whether the preset should be recalled to preview or program
+@MappableEnum()
 enum RecallType {
   preview(0),
   program(1);

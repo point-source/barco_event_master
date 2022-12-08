@@ -1,5 +1,8 @@
 import 'package:barco_event_master/barco_event_master.dart';
+import 'package:barco_event_master/barco_event_master.mapper.g.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 
+/// Lists all the input sources with properties.
 extension ListSources on EventMaster {
   /// Lists all the input sources with properties.
   Future<EventMasterResponse<List<Source>>> listSources({
@@ -17,12 +20,13 @@ extension ListSources on EventMaster {
       result: response.result?.copyWith<List<Source>>(
         response: result == null
             ? null
-            : List.from(result).map((e) => Source.fromMap(e)).toList(),
+            : List.from(result).map((e) => Mapper.fromMap<Source>(e)).toList(),
       ),
     );
   }
 }
 
+@MappableEnum()
 enum SourceType {
   all(0),
   background(1);

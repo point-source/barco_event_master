@@ -1,5 +1,8 @@
 import 'package:barco_event_master/barco_event_master.dart';
+import 'package:barco_event_master/barco_event_master.mapper.g.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 
+///  Lists all the destinations with properties such as layers, outputs, id, size, and name.
 extension ListDestinations on EventMaster {
   ///  Lists all the destinations with properties such as layers, outputs, id, size, and name.
   Future<EventMasterResponse<Destinations>> listDestinations({
@@ -15,12 +18,13 @@ extension ListDestinations on EventMaster {
 
     return response.copyWith<Destinations>(
       result: response.result?.copyWith<Destinations>(
-        response: result == null ? null : Destinations.fromMap(result),
+        response: result == null ? null : Mapper.fromMap<Destinations>(result),
       ),
     );
   }
 }
 
+@MappableEnum()
 enum DestinationType {
   all(0),
   screen(1),

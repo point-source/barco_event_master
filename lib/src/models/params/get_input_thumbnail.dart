@@ -3,6 +3,8 @@ import 'dart:typed_data';
 import 'package:http/http.dart' as http;
 import 'package:barco_event_master/barco_event_master.dart';
 
+/// Gets a png thumbnail of the content on the specified input and
+/// returns it as a list of 8-bit unsigned integers
 extension GetInputThumbnail on EventMaster {
   /// Gets a png thumbnail of the content on the specified input and
   /// returns it as a list of 8-bit unsigned integers

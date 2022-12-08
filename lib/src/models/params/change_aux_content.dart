@@ -1,5 +1,9 @@
 import 'package:barco_event_master/barco_event_master.dart';
 
+/// Changes the source of an Aux destination
+///
+/// Must specify: [auxId] OR [auxName] for destination
+/// Must specifiy: [presetSerialNumber]
 extension ChangeAuxContent on EventMaster {
   /// Changes the source of an Aux destination
   ///

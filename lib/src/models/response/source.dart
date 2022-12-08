@@ -1,6 +1,8 @@
-import 'dart:convert';
+import 'package:barco_event_master/barco_event_master.mapper.g.dart';
+import 'package:dart_mappable/dart_mappable.dart';
 
-class Source {
+@MappableClass()
+class Source with SourceMappable {
   Source({
     required this.id,
     this.name = '',
@@ -30,76 +32,9 @@ class Source {
   final int capacity;
   final InputCfgVideoStatus inputCfgVideoStatus;
   final String? mode3D;
-
-  Source copyWith({
-    int? id,
-    String? name,
-    int? hSize,
-    int? vSize,
-    int? srcType,
-    int? inputCfgIndex,
-    int? stillIndex,
-    int? destIndex,
-    int? userKeyIndex,
-    int? freeze,
-    int? capacity,
-    InputCfgVideoStatus? inputCfgVideoStatus,
-    String? mode3D,
-  }) =>
-      Source(
-        id: id ?? this.id,
-        name: name ?? this.name,
-        hSize: hSize ?? this.hSize,
-        vSize: vSize ?? this.vSize,
-        srcType: srcType ?? this.srcType,
-        inputCfgIndex: inputCfgIndex ?? this.inputCfgIndex,
-        stillIndex: stillIndex ?? this.stillIndex,
-        destIndex: destIndex ?? this.destIndex,
-        userKeyIndex: userKeyIndex ?? this.userKeyIndex,
-        freeze: freeze ?? this.freeze,
-        capacity: capacity ?? this.capacity,
-        inputCfgVideoStatus: inputCfgVideoStatus ?? this.inputCfgVideoStatus,
-        mode3D: mode3D ?? this.mode3D,
-      );
-
-  factory Source.fromJson(String str) => Source.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory Source.fromMap(Map<String, dynamic> json) => Source(
-        id: json["id"],
-        name: json["Name"],
-        hSize: json["HSize"],
-        vSize: json["VSize"],
-        srcType: json["SrcType"],
-        inputCfgIndex: json["InputCfgIndex"],
-        stillIndex: json["StillIndex"],
-        destIndex: json["DestIndex"],
-        userKeyIndex: json["UserKeyIndex"],
-        freeze: json["Freeze"],
-        capacity: json["Capacity"],
-        inputCfgVideoStatus:
-            InputCfgVideoStatus.fromIndex(json["InputCfgVideoStatus"]),
-        mode3D: json["Mode3D"],
-      );
-
-  Map<String, dynamic> toMap() => {
-        "id": id,
-        "Name": name,
-        "HSize": hSize,
-        "VSize": vSize,
-        "SrcType": srcType,
-        "InputCfgIndex": inputCfgIndex,
-        "StillIndex": stillIndex,
-        "DestIndex": destIndex,
-        "UserKeyIndex": userKeyIndex,
-        "Freeze": freeze,
-        "Capacity": capacity,
-        "InputCfgVideoStatus": inputCfgVideoStatus.status,
-        "Mode3D": mode3D,
-      };
 }
 
+@MappableEnum()
 enum InputCfgVideoStatus {
   /// Invalid; there is sync, but cannot acquire / lock mismatch
   invalid(0),
