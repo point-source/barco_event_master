@@ -1,3 +1,11 @@
+## 3.0.0
+
+- Add getInputThumbnail method
+- Add listPresets method
+- Use generated serialization (dart_mappable)
+- Improve docs
+- Update readme
+
 ## 2.2.0
 
 - Add getInputThumbnail method
