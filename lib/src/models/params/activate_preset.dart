@@ -1,6 +1,8 @@
 import 'package:barco_event_master/barco_event_master.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 
+part 'activate_preset.mapper.dart';
+
 /// Recall a Preset on the Event Master processor. User can recall Preset with id,
 /// Preset serial number, or Preset name.
 ///

@@ -1,5 +1,6 @@
-import 'package:barco_event_master/barco_event_master.mapper.g.dart';
 import 'package:dart_mappable/dart_mappable.dart';
+
+part 'destination.mapper.dart';
 
 @MappableClass()
 class Destinations with DestinationsMappable {

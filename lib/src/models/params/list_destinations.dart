@@ -1,6 +1,8 @@
+import 'package:barco_event_master/barco_event_master.container.dart';
 import 'package:barco_event_master/barco_event_master.dart';
-import 'package:barco_event_master/barco_event_master.mapper.g.dart';
 import 'package:dart_mappable/dart_mappable.dart';
+
+part 'list_destinations.mapper.dart';
 
 ///  Lists all the destinations with properties such as layers, outputs, id, size, and name.
 extension ListDestinations on EventMaster {
@@ -18,7 +20,9 @@ extension ListDestinations on EventMaster {
 
     return response.copyWith<Destinations>(
       result: response.result?.copyWith<Destinations>(
-        response: result == null ? null : Mapper.fromMap<Destinations>(result),
+        response: result == null
+            ? null
+            : barcoEventMasterContainer.fromMap<Destinations>(result),
       ),
     );
   }

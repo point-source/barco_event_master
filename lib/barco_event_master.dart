@@ -1,4 +1,10 @@
+@MappableLib(
+  createCombinedContainer: true,
+  discoveryMode: DiscoveryMode.package,
+)
 library barco_event_master;
+
+import 'package:dart_mappable/dart_mappable.dart';
 
 export 'src/barco_event_master_base.dart';
 export 'src/models/event_master_response.dart';

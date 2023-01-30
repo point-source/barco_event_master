@@ -1,6 +1,8 @@
+import 'package:barco_event_master/barco_event_master.container.dart';
 import 'package:barco_event_master/barco_event_master.dart';
-import 'package:barco_event_master/barco_event_master.mapper.g.dart';
 import 'package:dart_mappable/dart_mappable.dart';
+
+part 'list_sources.mapper.dart';
 
 /// Lists all the input sources with properties.
 extension ListSources on EventMaster {
@@ -20,7 +22,9 @@ extension ListSources on EventMaster {
       result: response.result?.copyWith<List<Source>>(
         response: result == null
             ? null
-            : List.from(result).map((e) => Mapper.fromMap<Source>(e)).toList(),
+            : List.from(result)
+                .map((e) => barcoEventMasterContainer.fromMap<Source>(e))
+                .toList(),
       ),
     );
   }
