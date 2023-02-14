@@ -30,7 +30,7 @@ extension ListSources on EventMaster {
   }
 }
 
-@MappableEnum()
+@MappableEnum(mode: ValuesMode.indexed)
 enum SourceType {
   all(0),
   background(1);

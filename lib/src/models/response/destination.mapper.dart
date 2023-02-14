@@ -155,14 +155,14 @@ class AuxDestinationMapperElement extends MapperElementBase<AuxDestination> {
   AuxDestination decode(dynamic v) =>
       checkedType(v, (Map<String, dynamic> map) => fromMap(map));
   AuxDestination fromMap(Map<String, dynamic> map) => AuxDestination(
-      id: container.$get(map, 'Id'),
+      id: container.$get(map, 'id'),
       auxStreamMode: container.$get(map, 'AuxStreamMode'));
 
   @override
   Function get encoder => encode;
   dynamic encode(AuxDestination v) => toMap(v);
   Map<String, dynamic> toMap(AuxDestination a) => {
-        'Id': container.$enc(a.id, 'id'),
+        'id': container.$enc(a.id, 'id'),
         'AuxStreamMode': container.$enc(a.auxStreamMode, 'auxStreamMode')
       };
 
@@ -255,7 +255,7 @@ class ScreenDestinationMapperElement
   ScreenDestination decode(dynamic v) =>
       checkedType(v, (Map<String, dynamic> map) => fromMap(map));
   ScreenDestination fromMap(Map<String, dynamic> map) => ScreenDestination(
-      id: container.$get(map, 'Id'),
+      id: container.$get(map, 'id'),
       name: container.$getOpt(map, 'Name') ?? '',
       hSize: container.$get(map, 'HSize'),
       vSize: container.$get(map, 'VSize'),
@@ -266,7 +266,7 @@ class ScreenDestinationMapperElement
   Function get encoder => encode;
   dynamic encode(ScreenDestination v) => toMap(v);
   Map<String, dynamic> toMap(ScreenDestination s) => {
-        'Id': container.$enc(s.id, 'id'),
+        'id': container.$enc(s.id, 'id'),
         'Name': container.$enc(s.name, 'name'),
         'HSize': container.$enc(s.hSize, 'hSize'),
         'VSize': container.$enc(s.vSize, 'vSize'),
@@ -400,14 +400,14 @@ class DestOutMapCollMapperElement extends MapperElementBase<DestOutMapColl> {
   DestOutMapColl decode(dynamic v) =>
       checkedType(v, (Map<String, dynamic> map) => fromMap(map));
   DestOutMapColl fromMap(Map<String, dynamic> map) => DestOutMapColl(
-      id: container.$get(map, 'Id'),
+      id: container.$get(map, 'id'),
       destOutMap: container.$getOpt(map, 'DestOutMap') ?? const []);
 
   @override
   Function get encoder => encode;
   dynamic encode(DestOutMapColl v) => toMap(v);
   Map<String, dynamic> toMap(DestOutMapColl d) => {
-        'Id': container.$enc(d.id, 'id'),
+        'id': container.$enc(d.id, 'id'),
         'DestOutMap': container.$enc(d.destOutMap, 'destOutMap')
       };
 
@@ -506,7 +506,7 @@ class DestOutMapMapperElement extends MapperElementBase<DestOutMap> {
   DestOutMap decode(dynamic v) =>
       checkedType(v, (Map<String, dynamic> map) => fromMap(map));
   DestOutMap fromMap(Map<String, dynamic> map) => DestOutMap(
-      id: container.$get(map, 'Id'),
+      id: container.$get(map, 'id'),
       name: container.$getOpt(map, 'Name') ?? '',
       hPos: container.$get(map, 'HPos'),
       vPos: container.$get(map, 'VPos'),
@@ -518,7 +518,7 @@ class DestOutMapMapperElement extends MapperElementBase<DestOutMap> {
   Function get encoder => encode;
   dynamic encode(DestOutMap v) => toMap(v);
   Map<String, dynamic> toMap(DestOutMap d) => {
-        'Id': container.$enc(d.id, 'id'),
+        'id': container.$enc(d.id, 'id'),
         'Name': container.$enc(d.name, 'name'),
         'HPos': container.$enc(d.hPos, 'hPos'),
         'VPos': container.$enc(d.vPos, 'vPos'),

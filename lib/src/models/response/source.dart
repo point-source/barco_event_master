@@ -16,10 +16,11 @@ class Source with SourceMappable {
     required this.userKeyIndex,
     required this.freeze,
     required this.capacity,
-    required this.inputCfgVideoStatus,
+    this.inputCfgVideoStatus = InputCfgVideoStatus.unknown,
     this.mode3D,
   });
 
+  @MappableField(key: 'id')
   final int id;
   final String name;
   final int hSize;
@@ -35,7 +36,7 @@ class Source with SourceMappable {
   final String? mode3D;
 }
 
-@MappableEnum()
+@MappableEnum(mode: ValuesMode.indexed)
 enum InputCfgVideoStatus {
   /// Invalid; there is sync, but cannot acquire / lock mismatch
   invalid(0),

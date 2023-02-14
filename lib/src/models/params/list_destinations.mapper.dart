@@ -15,11 +15,11 @@ class DestinationTypeMapper extends EnumMapper<DestinationType> {
   @override
   DestinationType decode(dynamic value) {
     switch (value) {
-      case 'all':
+      case 0:
         return DestinationType.all;
-      case 'screen':
+      case 1:
         return DestinationType.screen;
-      case 'aux':
+      case 2:
         return DestinationType.aux;
       default:
         throw MapperException.unknownEnumValue(value);
@@ -30,15 +30,15 @@ class DestinationTypeMapper extends EnumMapper<DestinationType> {
   dynamic encode(DestinationType self) {
     switch (self) {
       case DestinationType.all:
-        return 'all';
+        return 0;
       case DestinationType.screen:
-        return 'screen';
+        return 1;
       case DestinationType.aux:
-        return 'aux';
+        return 2;
     }
   }
 }
 
 extension DestinationTypeMapperExtension on DestinationType {
-  String toValue() => DestinationTypeMapper.container.toValue(this) as String;
+  dynamic toValue() => DestinationTypeMapper.container.toValue(this);
 }

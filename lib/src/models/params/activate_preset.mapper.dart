@@ -15,9 +15,9 @@ class RecallTypeMapper extends EnumMapper<RecallType> {
   @override
   RecallType decode(dynamic value) {
     switch (value) {
-      case 'preview':
+      case 0:
         return RecallType.preview;
-      case 'program':
+      case 1:
         return RecallType.program;
       default:
         throw MapperException.unknownEnumValue(value);
@@ -28,13 +28,13 @@ class RecallTypeMapper extends EnumMapper<RecallType> {
   dynamic encode(RecallType self) {
     switch (self) {
       case RecallType.preview:
-        return 'preview';
+        return 0;
       case RecallType.program:
-        return 'program';
+        return 1;
     }
   }
 }
 
 extension RecallTypeMapperExtension on RecallType {
-  String toValue() => RecallTypeMapper.container.toValue(this) as String;
+  dynamic toValue() => RecallTypeMapper.container.toValue(this);
 }

@@ -20,6 +20,7 @@ class AuxDestination with AuxDestinationMappable {
     required this.auxStreamMode,
   });
 
+  @MappableField(key: 'id')
   final int id;
   final int auxStreamMode;
 }
@@ -36,6 +37,7 @@ class ScreenDestination with ScreenDestinationMappable {
   });
 
   /// Destination ID
+  @MappableField(key: 'id')
   final int id;
 
   /// Name of the destination
@@ -59,6 +61,7 @@ class DestOutMapColl with DestOutMapCollMappable {
     this.destOutMap = const [],
   });
 
+  @MappableField(key: 'id')
   final int id;
   final List<DestOutMap> destOutMap;
 }
@@ -75,6 +78,7 @@ class DestOutMap with DestOutMapMappable {
     required this.freeze,
   });
 
+  @MappableField(key: 'id')
   final int id;
   final String name;
 

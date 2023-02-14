@@ -30,7 +30,7 @@ class SourceMapperElement extends MapperElementBase<Source> {
   Source decode(dynamic v) =>
       checkedType(v, (Map<String, dynamic> map) => fromMap(map));
   Source fromMap(Map<String, dynamic> map) => Source(
-      id: container.$get(map, 'Id'),
+      id: container.$get(map, 'id'),
       name: container.$getOpt(map, 'Name') ?? '',
       hSize: container.$get(map, 'HSize'),
       vSize: container.$get(map, 'VSize'),
@@ -41,14 +41,15 @@ class SourceMapperElement extends MapperElementBase<Source> {
       userKeyIndex: container.$get(map, 'UserKeyIndex'),
       freeze: container.$get(map, 'Freeze'),
       capacity: container.$get(map, 'Capacity'),
-      inputCfgVideoStatus: container.$get(map, 'InputCfgVideoStatus'),
+      inputCfgVideoStatus: container.$getOpt(map, 'InputCfgVideoStatus') ??
+          InputCfgVideoStatus.unknown,
       mode3D: container.$getOpt(map, 'Mode3d'));
 
   @override
   Function get encoder => encode;
   dynamic encode(Source v) => toMap(v);
   Map<String, dynamic> toMap(Source s) => {
-        'Id': container.$enc(s.id, 'id'),
+        'id': container.$enc(s.id, 'id'),
         'Name': container.$enc(s.name, 'name'),
         'HSize': container.$enc(s.hSize, 'hSize'),
         'VSize': container.$enc(s.vSize, 'vSize'),
@@ -194,17 +195,17 @@ class InputCfgVideoStatusMapper extends EnumMapper<InputCfgVideoStatus> {
   @override
   InputCfgVideoStatus decode(dynamic value) {
     switch (value) {
-      case 'invalid':
+      case 0:
         return InputCfgVideoStatus.invalid;
-      case 'valid':
+      case 1:
         return InputCfgVideoStatus.valid;
-      case 'mismatchFormat':
+      case 2:
         return InputCfgVideoStatus.mismatchFormat;
-      case 'outOfRange':
+      case 3:
         return InputCfgVideoStatus.outOfRange;
-      case 'noSync':
+      case 4:
         return InputCfgVideoStatus.noSync;
-      case 'unknown':
+      case 5:
         return InputCfgVideoStatus.unknown;
       default:
         throw MapperException.unknownEnumValue(value);
@@ -215,22 +216,21 @@ class InputCfgVideoStatusMapper extends EnumMapper<InputCfgVideoStatus> {
   dynamic encode(InputCfgVideoStatus self) {
     switch (self) {
       case InputCfgVideoStatus.invalid:
-        return 'invalid';
+        return 0;
       case InputCfgVideoStatus.valid:
-        return 'valid';
+        return 1;
       case InputCfgVideoStatus.mismatchFormat:
-        return 'mismatchFormat';
+        return 2;
       case InputCfgVideoStatus.outOfRange:
-        return 'outOfRange';
+        return 3;
       case InputCfgVideoStatus.noSync:
-        return 'noSync';
+        return 4;
       case InputCfgVideoStatus.unknown:
-        return 'unknown';
+        return 5;
     }
   }
 }
 
 extension InputCfgVideoStatusMapperExtension on InputCfgVideoStatus {
-  String toValue() =>
-      InputCfgVideoStatusMapper.container.toValue(this) as String;
+  dynamic toValue() => InputCfgVideoStatusMapper.container.toValue(this);
 }

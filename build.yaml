@@ -1,4 +1,4 @@
 global_options:
   dart_mappable_builder:
     options:
-      caseStyle: pascalCase # or 'camelCase', 'snakeCase', etc.
+      caseStyle: pascalCase

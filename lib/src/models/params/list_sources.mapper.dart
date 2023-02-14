@@ -15,9 +15,9 @@ class SourceTypeMapper extends EnumMapper<SourceType> {
   @override
   SourceType decode(dynamic value) {
     switch (value) {
-      case 'all':
+      case 0:
         return SourceType.all;
-      case 'background':
+      case 1:
         return SourceType.background;
       default:
         throw MapperException.unknownEnumValue(value);
@@ -28,13 +28,13 @@ class SourceTypeMapper extends EnumMapper<SourceType> {
   dynamic encode(SourceType self) {
     switch (self) {
       case SourceType.all:
-        return 'all';
+        return 0;
       case SourceType.background:
-        return 'background';
+        return 1;
     }
   }
 }
 
 extension SourceTypeMapperExtension on SourceType {
-  String toValue() => SourceTypeMapper.container.toValue(this) as String;
+  dynamic toValue() => SourceTypeMapper.container.toValue(this);
 }

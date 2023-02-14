@@ -28,7 +28,7 @@ extension ListDestinations on EventMaster {
   }
 }
 
-@MappableEnum()
+@MappableEnum(mode: ValuesMode.indexed)
 enum DestinationType {
   all(0),
   screen(1),

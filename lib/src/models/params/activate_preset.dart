@@ -60,7 +60,7 @@ extension ActivatePreset on EventMaster {
 }
 
 /// Specifies whether the preset should be recalled to preview or program
-@MappableEnum()
+@MappableEnum(mode: ValuesMode.indexed)
 enum RecallType {
   preview(0),
   program(1);
