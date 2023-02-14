@@ -1,3 +1,7 @@
+## 4.0.2
+
+- Fix ID and enum serialization
+
 ## 4.0.1
 
 - Fix casing of field names during deserialization

@@ -1,6 +1,6 @@
 name: barco_event_master
 description: A library for controlling Barco Event Master systems via JSON RPC
-version: 4.0.1
+version: 4.0.2
 homepage: https://github.com/point-source/barco_event_master
 
 environment:
