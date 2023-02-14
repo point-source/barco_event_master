@@ -1,3 +1,7 @@
+## 4.0.1
+
+- Fix casing of field names during deserialization
+
 ## 4.0.0
 
 - Update dart_mappable (serialization) to 2.0.0 (stable)

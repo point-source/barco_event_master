@@ -30,38 +30,38 @@ class SourceMapperElement extends MapperElementBase<Source> {
   Source decode(dynamic v) =>
       checkedType(v, (Map<String, dynamic> map) => fromMap(map));
   Source fromMap(Map<String, dynamic> map) => Source(
-      id: container.$get(map, 'id'),
-      name: container.$getOpt(map, 'name') ?? '',
-      hSize: container.$get(map, 'hSize'),
-      vSize: container.$get(map, 'vSize'),
-      srcType: container.$get(map, 'srcType'),
-      inputCfgIndex: container.$get(map, 'inputCfgIndex'),
-      stillIndex: container.$get(map, 'stillIndex'),
-      destIndex: container.$get(map, 'destIndex'),
-      userKeyIndex: container.$get(map, 'userKeyIndex'),
-      freeze: container.$get(map, 'freeze'),
-      capacity: container.$get(map, 'capacity'),
-      inputCfgVideoStatus: container.$get(map, 'inputCfgVideoStatus'),
-      mode3D: container.$getOpt(map, 'mode3D'));
+      id: container.$get(map, 'Id'),
+      name: container.$getOpt(map, 'Name') ?? '',
+      hSize: container.$get(map, 'HSize'),
+      vSize: container.$get(map, 'VSize'),
+      srcType: container.$get(map, 'SrcType'),
+      inputCfgIndex: container.$get(map, 'InputCfgIndex'),
+      stillIndex: container.$get(map, 'StillIndex'),
+      destIndex: container.$get(map, 'DestIndex'),
+      userKeyIndex: container.$get(map, 'UserKeyIndex'),
+      freeze: container.$get(map, 'Freeze'),
+      capacity: container.$get(map, 'Capacity'),
+      inputCfgVideoStatus: container.$get(map, 'InputCfgVideoStatus'),
+      mode3D: container.$getOpt(map, 'Mode3d'));
 
   @override
   Function get encoder => encode;
   dynamic encode(Source v) => toMap(v);
   Map<String, dynamic> toMap(Source s) => {
-        'id': container.$enc(s.id, 'id'),
-        'name': container.$enc(s.name, 'name'),
-        'hSize': container.$enc(s.hSize, 'hSize'),
-        'vSize': container.$enc(s.vSize, 'vSize'),
-        'srcType': container.$enc(s.srcType, 'srcType'),
-        'inputCfgIndex': container.$enc(s.inputCfgIndex, 'inputCfgIndex'),
-        'stillIndex': container.$enc(s.stillIndex, 'stillIndex'),
-        'destIndex': container.$enc(s.destIndex, 'destIndex'),
-        'userKeyIndex': container.$enc(s.userKeyIndex, 'userKeyIndex'),
-        'freeze': container.$enc(s.freeze, 'freeze'),
-        'capacity': container.$enc(s.capacity, 'capacity'),
-        'inputCfgVideoStatus':
+        'Id': container.$enc(s.id, 'id'),
+        'Name': container.$enc(s.name, 'name'),
+        'HSize': container.$enc(s.hSize, 'hSize'),
+        'VSize': container.$enc(s.vSize, 'vSize'),
+        'SrcType': container.$enc(s.srcType, 'srcType'),
+        'InputCfgIndex': container.$enc(s.inputCfgIndex, 'inputCfgIndex'),
+        'StillIndex': container.$enc(s.stillIndex, 'stillIndex'),
+        'DestIndex': container.$enc(s.destIndex, 'destIndex'),
+        'UserKeyIndex': container.$enc(s.userKeyIndex, 'userKeyIndex'),
+        'Freeze': container.$enc(s.freeze, 'freeze'),
+        'Capacity': container.$enc(s.capacity, 'capacity'),
+        'InputCfgVideoStatus':
             container.$enc(s.inputCfgVideoStatus, 'inputCfgVideoStatus'),
-        'mode3D': container.$enc(s.mode3D, 'mode3D')
+        'Mode3d': container.$enc(s.mode3D, 'mode3D')
       };
 
   @override

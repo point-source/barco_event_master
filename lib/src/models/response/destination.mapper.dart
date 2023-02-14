@@ -32,16 +32,16 @@ class DestinationsMapperElement extends MapperElementBase<Destinations> {
       checkedType(v, (Map<String, dynamic> map) => fromMap(map));
   Destinations fromMap(Map<String, dynamic> map) => Destinations(
       screenDestination:
-          container.$getOpt(map, 'screenDestination') ?? const [],
-      auxDestination: container.$getOpt(map, 'auxDestination') ?? const []);
+          container.$getOpt(map, 'ScreenDestination') ?? const [],
+      auxDestination: container.$getOpt(map, 'AuxDestination') ?? const []);
 
   @override
   Function get encoder => encode;
   dynamic encode(Destinations v) => toMap(v);
   Map<String, dynamic> toMap(Destinations d) => {
-        'screenDestination':
+        'ScreenDestination':
             container.$enc(d.screenDestination, 'screenDestination'),
-        'auxDestination': container.$enc(d.auxDestination, 'auxDestination')
+        'AuxDestination': container.$enc(d.auxDestination, 'auxDestination')
       };
 
   @override
@@ -155,15 +155,15 @@ class AuxDestinationMapperElement extends MapperElementBase<AuxDestination> {
   AuxDestination decode(dynamic v) =>
       checkedType(v, (Map<String, dynamic> map) => fromMap(map));
   AuxDestination fromMap(Map<String, dynamic> map) => AuxDestination(
-      id: container.$get(map, 'id'),
-      auxStreamMode: container.$get(map, 'auxStreamMode'));
+      id: container.$get(map, 'Id'),
+      auxStreamMode: container.$get(map, 'AuxStreamMode'));
 
   @override
   Function get encoder => encode;
   dynamic encode(AuxDestination v) => toMap(v);
   Map<String, dynamic> toMap(AuxDestination a) => {
-        'id': container.$enc(a.id, 'id'),
-        'auxStreamMode': container.$enc(a.auxStreamMode, 'auxStreamMode')
+        'Id': container.$enc(a.id, 'id'),
+        'AuxStreamMode': container.$enc(a.auxStreamMode, 'auxStreamMode')
       };
 
   @override
@@ -255,23 +255,23 @@ class ScreenDestinationMapperElement
   ScreenDestination decode(dynamic v) =>
       checkedType(v, (Map<String, dynamic> map) => fromMap(map));
   ScreenDestination fromMap(Map<String, dynamic> map) => ScreenDestination(
-      id: container.$get(map, 'id'),
-      name: container.$getOpt(map, 'name') ?? '',
-      hSize: container.$get(map, 'hSize'),
-      vSize: container.$get(map, 'vSize'),
-      layers: container.$get(map, 'layers'),
-      destOutMapColl: container.$getOpt(map, 'destOutMapColl') ?? const []);
+      id: container.$get(map, 'Id'),
+      name: container.$getOpt(map, 'Name') ?? '',
+      hSize: container.$get(map, 'HSize'),
+      vSize: container.$get(map, 'VSize'),
+      layers: container.$get(map, 'Layers'),
+      destOutMapColl: container.$getOpt(map, 'DestOutMapColl') ?? const []);
 
   @override
   Function get encoder => encode;
   dynamic encode(ScreenDestination v) => toMap(v);
   Map<String, dynamic> toMap(ScreenDestination s) => {
-        'id': container.$enc(s.id, 'id'),
-        'name': container.$enc(s.name, 'name'),
-        'hSize': container.$enc(s.hSize, 'hSize'),
-        'vSize': container.$enc(s.vSize, 'vSize'),
-        'layers': container.$enc(s.layers, 'layers'),
-        'destOutMapColl': container.$enc(s.destOutMapColl, 'destOutMapColl')
+        'Id': container.$enc(s.id, 'id'),
+        'Name': container.$enc(s.name, 'name'),
+        'HSize': container.$enc(s.hSize, 'hSize'),
+        'VSize': container.$enc(s.vSize, 'vSize'),
+        'Layers': container.$enc(s.layers, 'layers'),
+        'DestOutMapColl': container.$enc(s.destOutMapColl, 'destOutMapColl')
       };
 
   @override
@@ -400,15 +400,15 @@ class DestOutMapCollMapperElement extends MapperElementBase<DestOutMapColl> {
   DestOutMapColl decode(dynamic v) =>
       checkedType(v, (Map<String, dynamic> map) => fromMap(map));
   DestOutMapColl fromMap(Map<String, dynamic> map) => DestOutMapColl(
-      id: container.$get(map, 'id'),
-      destOutMap: container.$getOpt(map, 'destOutMap') ?? const []);
+      id: container.$get(map, 'Id'),
+      destOutMap: container.$getOpt(map, 'DestOutMap') ?? const []);
 
   @override
   Function get encoder => encode;
   dynamic encode(DestOutMapColl v) => toMap(v);
   Map<String, dynamic> toMap(DestOutMapColl d) => {
-        'id': container.$enc(d.id, 'id'),
-        'destOutMap': container.$enc(d.destOutMap, 'destOutMap')
+        'Id': container.$enc(d.id, 'id'),
+        'DestOutMap': container.$enc(d.destOutMap, 'destOutMap')
       };
 
   @override
@@ -506,25 +506,25 @@ class DestOutMapMapperElement extends MapperElementBase<DestOutMap> {
   DestOutMap decode(dynamic v) =>
       checkedType(v, (Map<String, dynamic> map) => fromMap(map));
   DestOutMap fromMap(Map<String, dynamic> map) => DestOutMap(
-      id: container.$get(map, 'id'),
-      name: container.$getOpt(map, 'name') ?? '',
-      hPos: container.$get(map, 'hPos'),
-      vPos: container.$get(map, 'vPos'),
-      hSize: container.$get(map, 'hSize'),
-      vSize: container.$get(map, 'vSize'),
-      freeze: container.$get(map, 'freeze'));
+      id: container.$get(map, 'Id'),
+      name: container.$getOpt(map, 'Name') ?? '',
+      hPos: container.$get(map, 'HPos'),
+      vPos: container.$get(map, 'VPos'),
+      hSize: container.$get(map, 'HSize'),
+      vSize: container.$get(map, 'VSize'),
+      freeze: container.$get(map, 'Freeze'));
 
   @override
   Function get encoder => encode;
   dynamic encode(DestOutMap v) => toMap(v);
   Map<String, dynamic> toMap(DestOutMap d) => {
-        'id': container.$enc(d.id, 'id'),
-        'name': container.$enc(d.name, 'name'),
-        'hPos': container.$enc(d.hPos, 'hPos'),
-        'vPos': container.$enc(d.vPos, 'vPos'),
-        'hSize': container.$enc(d.hSize, 'hSize'),
-        'vSize': container.$enc(d.vSize, 'vSize'),
-        'freeze': container.$enc(d.freeze, 'freeze')
+        'Id': container.$enc(d.id, 'id'),
+        'Name': container.$enc(d.name, 'name'),
+        'HPos': container.$enc(d.hPos, 'hPos'),
+        'VPos': container.$enc(d.vPos, 'vPos'),
+        'HSize': container.$enc(d.hSize, 'hSize'),
+        'VSize': container.$enc(d.vSize, 'vSize'),
+        'Freeze': container.$enc(d.freeze, 'freeze')
       };
 
   @override
