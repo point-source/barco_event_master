@@ -6,11 +6,19 @@
 part of 'list_destinations.dart';
 
 class DestinationTypeMapper extends EnumMapper<DestinationType> {
-  static MapperContainer container = MapperContainer(
-    mappers: {DestinationTypeMapper()},
-  );
+  DestinationTypeMapper._();
+  static DestinationTypeMapper? _instance;
+  static DestinationTypeMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = DestinationTypeMapper._());
+    }
+    return _instance!;
+  }
 
-  static final fromValue = container.fromValue<DestinationType>;
+  static DestinationType fromValue(dynamic value) {
+    ensureInitialized();
+    return MapperContainer.globals.fromValue(value);
+  }
 
   @override
   DestinationType decode(dynamic value) {
@@ -40,5 +48,8 @@ class DestinationTypeMapper extends EnumMapper<DestinationType> {
 }
 
 extension DestinationTypeMapperExtension on DestinationType {
-  dynamic toValue() => DestinationTypeMapper.container.toValue(this);
+  dynamic toValue() {
+    DestinationTypeMapper.ensureInitialized();
+    return MapperContainer.globals.toValue(this);
+  }
 }

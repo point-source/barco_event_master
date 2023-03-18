@@ -1,7 +1,4 @@
-@MappableLib(
-  createCombinedContainer: true,
-  discoveryMode: DiscoveryMode.package,
-)
+@MappableLib(generateInitializerForScope: InitializerScope.package)
 library barco_event_master;
 
 import 'package:dart_mappable/dart_mappable.dart';

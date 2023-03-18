@@ -6,11 +6,19 @@
 part of 'list_sources.dart';
 
 class SourceTypeMapper extends EnumMapper<SourceType> {
-  static MapperContainer container = MapperContainer(
-    mappers: {SourceTypeMapper()},
-  );
+  SourceTypeMapper._();
+  static SourceTypeMapper? _instance;
+  static SourceTypeMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = SourceTypeMapper._());
+    }
+    return _instance!;
+  }
 
-  static final fromValue = container.fromValue<SourceType>;
+  static SourceType fromValue(dynamic value) {
+    ensureInitialized();
+    return MapperContainer.globals.fromValue(value);
+  }
 
   @override
   SourceType decode(dynamic value) {
@@ -36,5 +44,8 @@ class SourceTypeMapper extends EnumMapper<SourceType> {
 }
 
 extension SourceTypeMapperExtension on SourceType {
-  dynamic toValue() => SourceTypeMapper.container.toValue(this);
+  dynamic toValue() {
+    SourceTypeMapper.ensureInitialized();
+    return MapperContainer.globals.toValue(this);
+  }
 }

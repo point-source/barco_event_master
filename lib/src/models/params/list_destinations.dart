@@ -1,4 +1,3 @@
-import 'package:barco_event_master/barco_event_master.container.dart';
 import 'package:barco_event_master/barco_event_master.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 
@@ -22,7 +21,7 @@ extension ListDestinations on EventMaster {
       result: response.result?.copyWith<Destinations>(
         response: result == null
             ? null
-            : barcoEventMasterContainer.fromMap<Destinations>(result),
+            : MapperContainer.globals.fromMap<Destinations>(result),
       ),
     );
   }

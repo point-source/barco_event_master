@@ -1,3 +1,7 @@
+## 5.0.0-dev.0
+
+- Upgrade dart_mappable to 3.0.0-dev.1
+
 ## 4.0.2
 
 - Fix ID and enum serialization

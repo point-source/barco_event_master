@@ -6,11 +6,19 @@
 part of 'activate_preset.dart';
 
 class RecallTypeMapper extends EnumMapper<RecallType> {
-  static MapperContainer container = MapperContainer(
-    mappers: {RecallTypeMapper()},
-  );
+  RecallTypeMapper._();
+  static RecallTypeMapper? _instance;
+  static RecallTypeMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = RecallTypeMapper._());
+    }
+    return _instance!;
+  }
 
-  static final fromValue = container.fromValue<RecallType>;
+  static RecallType fromValue(dynamic value) {
+    ensureInitialized();
+    return MapperContainer.globals.fromValue(value);
+  }
 
   @override
   RecallType decode(dynamic value) {
@@ -36,5 +44,8 @@ class RecallTypeMapper extends EnumMapper<RecallType> {
 }
 
 extension RecallTypeMapperExtension on RecallType {
-  dynamic toValue() => RecallTypeMapper.container.toValue(this);
+  dynamic toValue() {
+    RecallTypeMapper.ensureInitialized();
+    return MapperContainer.globals.toValue(this);
+  }
 }

@@ -1,6 +1,6 @@
 name: barco_event_master
 description: A library for controlling Barco Event Master systems via JSON RPC
-version: 4.0.2
+version: 5.0.0-dev.0
 homepage: https://github.com/point-source/barco_event_master
 
 environment:
@@ -8,13 +8,13 @@ environment:
 
 dependencies:
   collection: ^1.16.0
-  dart_mappable: ^2.0.2
+  dart_mappable: ^3.0.0-dev.1
   http: ^0.13.4
   socket_io_client: ^2.0.0
 
 dev_dependencies:
   build_runner: ^2.3.2
   dart_code_metrics: ^5.1.0
-  dart_mappable_builder: ^2.0.0
+  dart_mappable_builder: ^3.0.0-dev.1
   lints: ^2.0.0
   test: ^1.16.0

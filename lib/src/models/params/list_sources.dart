@@ -1,4 +1,3 @@
-import 'package:barco_event_master/barco_event_master.container.dart';
 import 'package:barco_event_master/barco_event_master.dart';
 import 'package:dart_mappable/dart_mappable.dart';
 
@@ -23,7 +22,7 @@ extension ListSources on EventMaster {
         response: result == null
             ? null
             : List.from(result)
-                .map((e) => barcoEventMasterContainer.fromMap<Source>(e))
+                .map((e) => MapperContainer.globals.fromMap<Source>(e))
                 .toList(),
       ),
     );

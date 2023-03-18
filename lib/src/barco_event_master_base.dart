@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 
 import 'package:barco_event_master/barco_event_master.dart';
+import 'package:barco_event_master/barco_event_master.init.dart';
 import 'package:http/http.dart' as http;
 
 /// Main Event Master control class
@@ -14,7 +15,9 @@ class EventMaster {
   /// It only configures the IP address to be used for requests.
   EventMaster({
     required this.ipAddress,
-  });
+  }) {
+    initializeMappers();
+  }
 
   /// IP Address to be used to communicate with the Event Master system
   final String ipAddress;
