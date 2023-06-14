@@ -7,6 +7,7 @@ part of 'list_destinations.dart';
 
 class DestinationTypeMapper extends EnumMapper<DestinationType> {
   DestinationTypeMapper._();
+
   static DestinationTypeMapper? _instance;
   static DestinationTypeMapper ensureInitialized() {
     if (_instance == null) {

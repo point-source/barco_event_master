@@ -7,6 +7,7 @@ part of 'destination.dart';
 
 class DestinationsMapper extends ClassMapperBase<Destinations> {
   DestinationsMapper._();
+
   static DestinationsMapper? _instance;
   static DestinationsMapper ensureInitialized() {
     if (_instance == null) {
@@ -27,23 +28,25 @@ class DestinationsMapper extends ClassMapperBase<Destinations> {
 
   static List<ScreenDestination> _$screenDestination(Destinations v) =>
       v.screenDestination;
+  static const Field<Destinations, List<ScreenDestination>>
+      _f$screenDestination = Field('screenDestination', _$screenDestination,
+          key: 'ScreenDestination', opt: true, def: const []);
   static List<AuxDestination> _$auxDestination(Destinations v) =>
       v.auxDestination;
+  static const Field<Destinations, List<AuxDestination>> _f$auxDestination =
+      Field('auxDestination', _$auxDestination,
+          key: 'AuxDestination', opt: true, def: const []);
 
   @override
   final Map<Symbol, Field<Destinations, dynamic>> fields = const {
-    #screenDestination: Field<Destinations, List<ScreenDestination>>(
-        'screenDestination', _$screenDestination,
-        key: 'ScreenDestination', opt: true, def: const []),
-    #auxDestination: Field<Destinations, List<AuxDestination>>(
-        'auxDestination', _$auxDestination,
-        key: 'AuxDestination', opt: true, def: const []),
+    #screenDestination: _f$screenDestination,
+    #auxDestination: _f$auxDestination,
   };
 
   static Destinations _instantiate(DecodingData data) {
     return Destinations(
-        screenDestination: data.get(#screenDestination),
-        auxDestination: data.get(#auxDestination));
+        screenDestination: data.dec(_f$screenDestination),
+        auxDestination: data.dec(_f$auxDestination));
   }
 
   @override
@@ -87,16 +90,14 @@ mixin DestinationsMappable {
   }
 }
 
-extension DestinationsValueCopy<$R, $Out extends Destinations>
+extension DestinationsValueCopy<$R, $Out>
     on ObjectCopyWith<$R, Destinations, $Out> {
   DestinationsCopyWith<$R, Destinations, $Out> get $asDestinations =>
       $base.as((v, t, t2) => _DestinationsCopyWithImpl(v, t, t2));
 }
 
-typedef DestinationsCopyWithBound = Destinations;
-
-abstract class DestinationsCopyWith<$R, $In extends Destinations,
-    $Out extends Destinations> implements ClassCopyWith<$R, $In, $Out> {
+abstract class DestinationsCopyWith<$R, $In extends Destinations, $Out>
+    implements ClassCopyWith<$R, $In, $Out> {
   ListCopyWith<$R, ScreenDestination,
           ScreenDestinationCopyWith<$R, ScreenDestination, ScreenDestination>>
       get screenDestination;
@@ -106,11 +107,10 @@ abstract class DestinationsCopyWith<$R, $In extends Destinations,
   $R call(
       {List<ScreenDestination>? screenDestination,
       List<AuxDestination>? auxDestination});
-  DestinationsCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2 extends Destinations>(
-      Then<Destinations, $Out2> t, Then<$Out2, $R2> t2);
+  DestinationsCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
-class _DestinationsCopyWithImpl<$R, $Out extends Destinations>
+class _DestinationsCopyWithImpl<$R, $Out>
     extends ClassCopyWithBase<$R, Destinations, $Out>
     implements DestinationsCopyWith<$R, Destinations, $Out> {
   _DestinationsCopyWithImpl(super.value, super.then, super.then2);
@@ -121,17 +121,13 @@ class _DestinationsCopyWithImpl<$R, $Out extends Destinations>
   @override
   ListCopyWith<$R, ScreenDestination,
           ScreenDestinationCopyWith<$R, ScreenDestination, ScreenDestination>>
-      get screenDestination => ListCopyWith(
-          $value.screenDestination,
-          (v, t) => v.copyWith.$chain<$R, ScreenDestination>($identity, t),
-          (v) => call(screenDestination: v));
+      get screenDestination => ListCopyWith($value.screenDestination,
+          (v, t) => v.copyWith.$chain(t), (v) => call(screenDestination: v));
   @override
   ListCopyWith<$R, AuxDestination,
           AuxDestinationCopyWith<$R, AuxDestination, AuxDestination>>
-      get auxDestination => ListCopyWith(
-          $value.auxDestination,
-          (v, t) => v.copyWith.$chain<$R, AuxDestination>($identity, t),
-          (v) => call(auxDestination: v));
+      get auxDestination => ListCopyWith($value.auxDestination,
+          (v, t) => v.copyWith.$chain(t), (v) => call(auxDestination: v));
   @override
   $R call(
           {List<ScreenDestination>? screenDestination,
@@ -147,14 +143,14 @@ class _DestinationsCopyWithImpl<$R, $Out extends Destinations>
       auxDestination: data.get(#auxDestination, or: $value.auxDestination));
 
   @override
-  DestinationsCopyWith<$R2, Destinations, $Out2>
-      $chain<$R2, $Out2 extends Destinations>(
-              Then<Destinations, $Out2> t, Then<$Out2, $R2> t2) =>
-          _DestinationsCopyWithImpl($value, t, t2);
+  DestinationsCopyWith<$R2, Destinations, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _DestinationsCopyWithImpl($value, $cast, t);
 }
 
 class AuxDestinationMapper extends ClassMapperBase<AuxDestination> {
   AuxDestinationMapper._();
+
   static AuxDestinationMapper? _instance;
   static AuxDestinationMapper ensureInitialized() {
     if (_instance == null) {
@@ -172,18 +168,20 @@ class AuxDestinationMapper extends ClassMapperBase<AuxDestination> {
   final String id = 'AuxDestination';
 
   static int _$id(AuxDestination v) => v.id;
+  static const Field<AuxDestination, int> _f$id = Field('id', _$id);
   static int _$auxStreamMode(AuxDestination v) => v.auxStreamMode;
+  static const Field<AuxDestination, int> _f$auxStreamMode =
+      Field('auxStreamMode', _$auxStreamMode, key: 'AuxStreamMode');
 
   @override
   final Map<Symbol, Field<AuxDestination, dynamic>> fields = const {
-    #id: Field<AuxDestination, int>('id', _$id),
-    #auxStreamMode: Field<AuxDestination, int>('auxStreamMode', _$auxStreamMode,
-        key: 'AuxStreamMode'),
+    #id: _f$id,
+    #auxStreamMode: _f$auxStreamMode,
   };
 
   static AuxDestination _instantiate(DecodingData data) {
     return AuxDestination(
-        id: data.get(#id), auxStreamMode: data.get(#auxStreamMode));
+        id: data.dec(_f$id), auxStreamMode: data.dec(_f$auxStreamMode));
   }
 
   @override
@@ -228,23 +226,20 @@ mixin AuxDestinationMappable {
   }
 }
 
-extension AuxDestinationValueCopy<$R, $Out extends AuxDestination>
+extension AuxDestinationValueCopy<$R, $Out>
     on ObjectCopyWith<$R, AuxDestination, $Out> {
   AuxDestinationCopyWith<$R, AuxDestination, $Out> get $asAuxDestination =>
       $base.as((v, t, t2) => _AuxDestinationCopyWithImpl(v, t, t2));
 }
 
-typedef AuxDestinationCopyWithBound = AuxDestination;
-
-abstract class AuxDestinationCopyWith<$R, $In extends AuxDestination,
-    $Out extends AuxDestination> implements ClassCopyWith<$R, $In, $Out> {
+abstract class AuxDestinationCopyWith<$R, $In extends AuxDestination, $Out>
+    implements ClassCopyWith<$R, $In, $Out> {
   $R call({int? id, int? auxStreamMode});
-  AuxDestinationCopyWith<$R2, $In, $Out2>
-      $chain<$R2, $Out2 extends AuxDestination>(
-          Then<AuxDestination, $Out2> t, Then<$Out2, $R2> t2);
+  AuxDestinationCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
+      Then<$Out2, $R2> t);
 }
 
-class _AuxDestinationCopyWithImpl<$R, $Out extends AuxDestination>
+class _AuxDestinationCopyWithImpl<$R, $Out>
     extends ClassCopyWithBase<$R, AuxDestination, $Out>
     implements AuxDestinationCopyWith<$R, AuxDestination, $Out> {
   _AuxDestinationCopyWithImpl(super.value, super.then, super.then2);
@@ -263,14 +258,14 @@ class _AuxDestinationCopyWithImpl<$R, $Out extends AuxDestination>
       auxStreamMode: data.get(#auxStreamMode, or: $value.auxStreamMode));
 
   @override
-  AuxDestinationCopyWith<$R2, AuxDestination, $Out2>
-      $chain<$R2, $Out2 extends AuxDestination>(
-              Then<AuxDestination, $Out2> t, Then<$Out2, $R2> t2) =>
-          _AuxDestinationCopyWithImpl($value, t, t2);
+  AuxDestinationCopyWith<$R2, AuxDestination, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _AuxDestinationCopyWithImpl($value, $cast, t);
 }
 
 class ScreenDestinationMapper extends ClassMapperBase<ScreenDestination> {
   ScreenDestinationMapper._();
+
   static ScreenDestinationMapper? _instance;
   static ScreenDestinationMapper ensureInitialized() {
     if (_instance == null) {
@@ -289,34 +284,43 @@ class ScreenDestinationMapper extends ClassMapperBase<ScreenDestination> {
   final String id = 'ScreenDestination';
 
   static int _$id(ScreenDestination v) => v.id;
+  static const Field<ScreenDestination, int> _f$id = Field('id', _$id);
   static String _$name(ScreenDestination v) => v.name;
+  static const Field<ScreenDestination, String> _f$name =
+      Field('name', _$name, key: 'Name', opt: true, def: '');
   static int _$hSize(ScreenDestination v) => v.hSize;
+  static const Field<ScreenDestination, int> _f$hSize =
+      Field('hSize', _$hSize, key: 'HSize');
   static int _$vSize(ScreenDestination v) => v.vSize;
+  static const Field<ScreenDestination, int> _f$vSize =
+      Field('vSize', _$vSize, key: 'VSize');
   static int _$layers(ScreenDestination v) => v.layers;
+  static const Field<ScreenDestination, int> _f$layers =
+      Field('layers', _$layers, key: 'Layers');
   static List<DestOutMapColl> _$destOutMapColl(ScreenDestination v) =>
       v.destOutMapColl;
+  static const Field<ScreenDestination, List<DestOutMapColl>>
+      _f$destOutMapColl = Field('destOutMapColl', _$destOutMapColl,
+          key: 'DestOutMapColl', opt: true, def: const []);
 
   @override
   final Map<Symbol, Field<ScreenDestination, dynamic>> fields = const {
-    #id: Field<ScreenDestination, int>('id', _$id),
-    #name: Field<ScreenDestination, String>('name', _$name,
-        key: 'Name', opt: true, def: ''),
-    #hSize: Field<ScreenDestination, int>('hSize', _$hSize, key: 'HSize'),
-    #vSize: Field<ScreenDestination, int>('vSize', _$vSize, key: 'VSize'),
-    #layers: Field<ScreenDestination, int>('layers', _$layers, key: 'Layers'),
-    #destOutMapColl: Field<ScreenDestination, List<DestOutMapColl>>(
-        'destOutMapColl', _$destOutMapColl,
-        key: 'DestOutMapColl', opt: true, def: const []),
+    #id: _f$id,
+    #name: _f$name,
+    #hSize: _f$hSize,
+    #vSize: _f$vSize,
+    #layers: _f$layers,
+    #destOutMapColl: _f$destOutMapColl,
   };
 
   static ScreenDestination _instantiate(DecodingData data) {
     return ScreenDestination(
-        id: data.get(#id),
-        name: data.get(#name),
-        hSize: data.get(#hSize),
-        vSize: data.get(#vSize),
-        layers: data.get(#layers),
-        destOutMapColl: data.get(#destOutMapColl));
+        id: data.dec(_f$id),
+        name: data.dec(_f$name),
+        hSize: data.dec(_f$hSize),
+        vSize: data.dec(_f$vSize),
+        layers: data.dec(_f$layers),
+        destOutMapColl: data.dec(_f$destOutMapColl));
   }
 
   @override
@@ -364,17 +368,15 @@ mixin ScreenDestinationMappable {
   }
 }
 
-extension ScreenDestinationValueCopy<$R, $Out extends ScreenDestination>
+extension ScreenDestinationValueCopy<$R, $Out>
     on ObjectCopyWith<$R, ScreenDestination, $Out> {
   ScreenDestinationCopyWith<$R, ScreenDestination, $Out>
       get $asScreenDestination =>
           $base.as((v, t, t2) => _ScreenDestinationCopyWithImpl(v, t, t2));
 }
 
-typedef ScreenDestinationCopyWithBound = ScreenDestination;
-
 abstract class ScreenDestinationCopyWith<$R, $In extends ScreenDestination,
-    $Out extends ScreenDestination> implements ClassCopyWith<$R, $In, $Out> {
+    $Out> implements ClassCopyWith<$R, $In, $Out> {
   ListCopyWith<$R, DestOutMapColl,
           DestOutMapCollCopyWith<$R, DestOutMapColl, DestOutMapColl>>
       get destOutMapColl;
@@ -385,12 +387,11 @@ abstract class ScreenDestinationCopyWith<$R, $In extends ScreenDestination,
       int? vSize,
       int? layers,
       List<DestOutMapColl>? destOutMapColl});
-  ScreenDestinationCopyWith<$R2, $In, $Out2>
-      $chain<$R2, $Out2 extends ScreenDestination>(
-          Then<ScreenDestination, $Out2> t, Then<$Out2, $R2> t2);
+  ScreenDestinationCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
+      Then<$Out2, $R2> t);
 }
 
-class _ScreenDestinationCopyWithImpl<$R, $Out extends ScreenDestination>
+class _ScreenDestinationCopyWithImpl<$R, $Out>
     extends ClassCopyWithBase<$R, ScreenDestination, $Out>
     implements ScreenDestinationCopyWith<$R, ScreenDestination, $Out> {
   _ScreenDestinationCopyWithImpl(super.value, super.then, super.then2);
@@ -401,10 +402,8 @@ class _ScreenDestinationCopyWithImpl<$R, $Out extends ScreenDestination>
   @override
   ListCopyWith<$R, DestOutMapColl,
           DestOutMapCollCopyWith<$R, DestOutMapColl, DestOutMapColl>>
-      get destOutMapColl => ListCopyWith(
-          $value.destOutMapColl,
-          (v, t) => v.copyWith.$chain<$R, DestOutMapColl>($identity, t),
-          (v) => call(destOutMapColl: v));
+      get destOutMapColl => ListCopyWith($value.destOutMapColl,
+          (v, t) => v.copyWith.$chain(t), (v) => call(destOutMapColl: v));
   @override
   $R call(
           {int? id,
@@ -431,14 +430,14 @@ class _ScreenDestinationCopyWithImpl<$R, $Out extends ScreenDestination>
       destOutMapColl: data.get(#destOutMapColl, or: $value.destOutMapColl));
 
   @override
-  ScreenDestinationCopyWith<$R2, ScreenDestination, $Out2>
-      $chain<$R2, $Out2 extends ScreenDestination>(
-              Then<ScreenDestination, $Out2> t, Then<$Out2, $R2> t2) =>
-          _ScreenDestinationCopyWithImpl($value, t, t2);
+  ScreenDestinationCopyWith<$R2, ScreenDestination, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _ScreenDestinationCopyWithImpl($value, $cast, t);
 }
 
 class DestOutMapCollMapper extends ClassMapperBase<DestOutMapColl> {
   DestOutMapCollMapper._();
+
   static DestOutMapCollMapper? _instance;
   static DestOutMapCollMapper ensureInitialized() {
     if (_instance == null) {
@@ -457,18 +456,21 @@ class DestOutMapCollMapper extends ClassMapperBase<DestOutMapColl> {
   final String id = 'DestOutMapColl';
 
   static int _$id(DestOutMapColl v) => v.id;
+  static const Field<DestOutMapColl, int> _f$id = Field('id', _$id);
   static List<DestOutMap> _$destOutMap(DestOutMapColl v) => v.destOutMap;
+  static const Field<DestOutMapColl, List<DestOutMap>> _f$destOutMap = Field(
+      'destOutMap', _$destOutMap,
+      key: 'DestOutMap', opt: true, def: const []);
 
   @override
   final Map<Symbol, Field<DestOutMapColl, dynamic>> fields = const {
-    #id: Field<DestOutMapColl, int>('id', _$id),
-    #destOutMap: Field<DestOutMapColl, List<DestOutMap>>(
-        'destOutMap', _$destOutMap,
-        key: 'DestOutMap', opt: true, def: const []),
+    #id: _f$id,
+    #destOutMap: _f$destOutMap,
   };
 
   static DestOutMapColl _instantiate(DecodingData data) {
-    return DestOutMapColl(id: data.get(#id), destOutMap: data.get(#destOutMap));
+    return DestOutMapColl(
+        id: data.dec(_f$id), destOutMap: data.dec(_f$destOutMap));
   }
 
   @override
@@ -513,25 +515,22 @@ mixin DestOutMapCollMappable {
   }
 }
 
-extension DestOutMapCollValueCopy<$R, $Out extends DestOutMapColl>
+extension DestOutMapCollValueCopy<$R, $Out>
     on ObjectCopyWith<$R, DestOutMapColl, $Out> {
   DestOutMapCollCopyWith<$R, DestOutMapColl, $Out> get $asDestOutMapColl =>
       $base.as((v, t, t2) => _DestOutMapCollCopyWithImpl(v, t, t2));
 }
 
-typedef DestOutMapCollCopyWithBound = DestOutMapColl;
-
-abstract class DestOutMapCollCopyWith<$R, $In extends DestOutMapColl,
-    $Out extends DestOutMapColl> implements ClassCopyWith<$R, $In, $Out> {
+abstract class DestOutMapCollCopyWith<$R, $In extends DestOutMapColl, $Out>
+    implements ClassCopyWith<$R, $In, $Out> {
   ListCopyWith<$R, DestOutMap, DestOutMapCopyWith<$R, DestOutMap, DestOutMap>>
       get destOutMap;
   $R call({int? id, List<DestOutMap>? destOutMap});
-  DestOutMapCollCopyWith<$R2, $In, $Out2>
-      $chain<$R2, $Out2 extends DestOutMapColl>(
-          Then<DestOutMapColl, $Out2> t, Then<$Out2, $R2> t2);
+  DestOutMapCollCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
+      Then<$Out2, $R2> t);
 }
 
-class _DestOutMapCollCopyWithImpl<$R, $Out extends DestOutMapColl>
+class _DestOutMapCollCopyWithImpl<$R, $Out>
     extends ClassCopyWithBase<$R, DestOutMapColl, $Out>
     implements DestOutMapCollCopyWith<$R, DestOutMapColl, $Out> {
   _DestOutMapCollCopyWithImpl(super.value, super.then, super.then2);
@@ -541,10 +540,8 @@ class _DestOutMapCollCopyWithImpl<$R, $Out extends DestOutMapColl>
       DestOutMapCollMapper.ensureInitialized();
   @override
   ListCopyWith<$R, DestOutMap, DestOutMapCopyWith<$R, DestOutMap, DestOutMap>>
-      get destOutMap => ListCopyWith(
-          $value.destOutMap,
-          (v, t) => v.copyWith.$chain<$R, DestOutMap>($identity, t),
-          (v) => call(destOutMap: v));
+      get destOutMap => ListCopyWith($value.destOutMap,
+          (v, t) => v.copyWith.$chain(t), (v) => call(destOutMap: v));
   @override
   $R call({int? id, List<DestOutMap>? destOutMap}) => $apply(FieldCopyWithData({
         if (id != null) #id: id,
@@ -556,14 +553,14 @@ class _DestOutMapCollCopyWithImpl<$R, $Out extends DestOutMapColl>
       destOutMap: data.get(#destOutMap, or: $value.destOutMap));
 
   @override
-  DestOutMapCollCopyWith<$R2, DestOutMapColl, $Out2>
-      $chain<$R2, $Out2 extends DestOutMapColl>(
-              Then<DestOutMapColl, $Out2> t, Then<$Out2, $R2> t2) =>
-          _DestOutMapCollCopyWithImpl($value, t, t2);
+  DestOutMapCollCopyWith<$R2, DestOutMapColl, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _DestOutMapCollCopyWithImpl($value, $cast, t);
 }
 
 class DestOutMapMapper extends ClassMapperBase<DestOutMap> {
   DestOutMapMapper._();
+
   static DestOutMapMapper? _instance;
   static DestOutMapMapper ensureInitialized() {
     if (_instance == null) {
@@ -581,34 +578,46 @@ class DestOutMapMapper extends ClassMapperBase<DestOutMap> {
   final String id = 'DestOutMap';
 
   static int _$id(DestOutMap v) => v.id;
+  static const Field<DestOutMap, int> _f$id = Field('id', _$id);
   static String _$name(DestOutMap v) => v.name;
+  static const Field<DestOutMap, String> _f$name =
+      Field('name', _$name, key: 'Name', opt: true, def: '');
   static int _$hPos(DestOutMap v) => v.hPos;
+  static const Field<DestOutMap, int> _f$hPos =
+      Field('hPos', _$hPos, key: 'HPos');
   static int _$vPos(DestOutMap v) => v.vPos;
+  static const Field<DestOutMap, int> _f$vPos =
+      Field('vPos', _$vPos, key: 'VPos');
   static int _$hSize(DestOutMap v) => v.hSize;
+  static const Field<DestOutMap, int> _f$hSize =
+      Field('hSize', _$hSize, key: 'HSize');
   static int _$vSize(DestOutMap v) => v.vSize;
+  static const Field<DestOutMap, int> _f$vSize =
+      Field('vSize', _$vSize, key: 'VSize');
   static int _$freeze(DestOutMap v) => v.freeze;
+  static const Field<DestOutMap, int> _f$freeze =
+      Field('freeze', _$freeze, key: 'Freeze');
 
   @override
   final Map<Symbol, Field<DestOutMap, dynamic>> fields = const {
-    #id: Field<DestOutMap, int>('id', _$id),
-    #name: Field<DestOutMap, String>('name', _$name,
-        key: 'Name', opt: true, def: ''),
-    #hPos: Field<DestOutMap, int>('hPos', _$hPos, key: 'HPos'),
-    #vPos: Field<DestOutMap, int>('vPos', _$vPos, key: 'VPos'),
-    #hSize: Field<DestOutMap, int>('hSize', _$hSize, key: 'HSize'),
-    #vSize: Field<DestOutMap, int>('vSize', _$vSize, key: 'VSize'),
-    #freeze: Field<DestOutMap, int>('freeze', _$freeze, key: 'Freeze'),
+    #id: _f$id,
+    #name: _f$name,
+    #hPos: _f$hPos,
+    #vPos: _f$vPos,
+    #hSize: _f$hSize,
+    #vSize: _f$vSize,
+    #freeze: _f$freeze,
   };
 
   static DestOutMap _instantiate(DecodingData data) {
     return DestOutMap(
-        id: data.get(#id),
-        name: data.get(#name),
-        hPos: data.get(#hPos),
-        vPos: data.get(#vPos),
-        hSize: data.get(#hSize),
-        vSize: data.get(#vSize),
-        freeze: data.get(#freeze));
+        id: data.dec(_f$id),
+        name: data.dec(_f$name),
+        hPos: data.dec(_f$hPos),
+        vPos: data.dec(_f$vPos),
+        hSize: data.dec(_f$hSize),
+        vSize: data.dec(_f$vSize),
+        freeze: data.dec(_f$freeze));
   }
 
   @override
@@ -652,16 +661,14 @@ mixin DestOutMapMappable {
   }
 }
 
-extension DestOutMapValueCopy<$R, $Out extends DestOutMap>
+extension DestOutMapValueCopy<$R, $Out>
     on ObjectCopyWith<$R, DestOutMap, $Out> {
   DestOutMapCopyWith<$R, DestOutMap, $Out> get $asDestOutMap =>
       $base.as((v, t, t2) => _DestOutMapCopyWithImpl(v, t, t2));
 }
 
-typedef DestOutMapCopyWithBound = DestOutMap;
-
-abstract class DestOutMapCopyWith<$R, $In extends DestOutMap,
-    $Out extends DestOutMap> implements ClassCopyWith<$R, $In, $Out> {
+abstract class DestOutMapCopyWith<$R, $In extends DestOutMap, $Out>
+    implements ClassCopyWith<$R, $In, $Out> {
   $R call(
       {int? id,
       String? name,
@@ -670,11 +677,10 @@ abstract class DestOutMapCopyWith<$R, $In extends DestOutMap,
       int? hSize,
       int? vSize,
       int? freeze});
-  DestOutMapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2 extends DestOutMap>(
-      Then<DestOutMap, $Out2> t, Then<$Out2, $R2> t2);
+  DestOutMapCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(Then<$Out2, $R2> t);
 }
 
-class _DestOutMapCopyWithImpl<$R, $Out extends DestOutMap>
+class _DestOutMapCopyWithImpl<$R, $Out>
     extends ClassCopyWithBase<$R, DestOutMap, $Out>
     implements DestOutMapCopyWith<$R, DestOutMap, $Out> {
   _DestOutMapCopyWithImpl(super.value, super.then, super.then2);
@@ -711,8 +717,7 @@ class _DestOutMapCopyWithImpl<$R, $Out extends DestOutMap>
       freeze: data.get(#freeze, or: $value.freeze));
 
   @override
-  DestOutMapCopyWith<$R2, DestOutMap, $Out2>
-      $chain<$R2, $Out2 extends DestOutMap>(
-              Then<DestOutMap, $Out2> t, Then<$Out2, $R2> t2) =>
-          _DestOutMapCopyWithImpl($value, t, t2);
+  DestOutMapCopyWith<$R2, DestOutMap, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _DestOutMapCopyWithImpl($value, $cast, t);
 }

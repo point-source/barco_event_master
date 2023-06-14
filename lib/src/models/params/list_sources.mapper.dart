@@ -7,6 +7,7 @@ part of 'list_sources.dart';
 
 class SourceTypeMapper extends EnumMapper<SourceType> {
   SourceTypeMapper._();
+
   static SourceTypeMapper? _instance;
   static SourceTypeMapper ensureInitialized() {
     if (_instance == null) {

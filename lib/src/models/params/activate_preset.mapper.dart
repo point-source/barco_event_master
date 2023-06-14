@@ -7,6 +7,7 @@ part of 'activate_preset.dart';
 
 class RecallTypeMapper extends EnumMapper<RecallType> {
   RecallTypeMapper._();
+
   static RecallTypeMapper? _instance;
   static RecallTypeMapper ensureInitialized() {
     if (_instance == null) {
