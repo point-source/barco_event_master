@@ -1,3 +1,8 @@
+## 5.0.1
+
+- Upgrade Dart SDK requirement to ">=3.0.0 <4.0.0"
+- Upgrade dependencies
+
 ## 5.0.0-dev.1
 
 - Upgrade dart_mappable to 3.1.1
