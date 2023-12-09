@@ -1,7 +1,8 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element
+// ignore_for_file: unused_element, unnecessary_cast
+// ignore_for_file: strict_raw_type, inference_failure_on_untyped_parameter
 
 part of 'source.dart';
 
@@ -63,7 +64,7 @@ class InputCfgVideoStatusMapper extends EnumMapper<InputCfgVideoStatus> {
 extension InputCfgVideoStatusMapperExtension on InputCfgVideoStatus {
   dynamic toValue() {
     InputCfgVideoStatusMapper.ensureInitialized();
-    return MapperContainer.globals.toValue(this);
+    return MapperContainer.globals.toValue<InputCfgVideoStatus>(this);
   }
 }
 
@@ -77,11 +78,6 @@ class SourceMapper extends ClassMapperBase<Source> {
       InputCfgVideoStatusMapper.ensureInitialized();
     }
     return _instance!;
-  }
-
-  static T _guard<T>(T Function(MapperContainer) fn) {
-    ensureInitialized();
-    return fn(MapperContainer.globals);
   }
 
   @override
@@ -168,40 +164,41 @@ class SourceMapper extends ClassMapperBase<Source> {
   final Function instantiate = _instantiate;
 
   static Source fromMap(Map<String, dynamic> map) {
-    return _guard((c) => c.fromMap<Source>(map));
+    return ensureInitialized().decodeMap<Source>(map);
   }
 
   static Source fromJson(String json) {
-    return _guard((c) => c.fromJson<Source>(json));
+    return ensureInitialized().decodeJson<Source>(json);
   }
 }
 
 mixin SourceMappable {
   String toJson() {
-    return SourceMapper._guard((c) => c.toJson(this as Source));
+    return SourceMapper.ensureInitialized().encodeJson<Source>(this as Source);
   }
 
   Map<String, dynamic> toMap() {
-    return SourceMapper._guard((c) => c.toMap(this as Source));
+    return SourceMapper.ensureInitialized().encodeMap<Source>(this as Source);
   }
 
   SourceCopyWith<Source, Source, Source> get copyWith =>
       _SourceCopyWithImpl(this as Source, $identity, $identity);
   @override
   String toString() {
-    return SourceMapper._guard((c) => c.asString(this));
+    return SourceMapper.ensureInitialized().stringifyValue(this as Source);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (runtimeType == other.runtimeType &&
-            SourceMapper._guard((c) => c.isEqual(this, other)));
+            SourceMapper.ensureInitialized()
+                .isValueEqual(this as Source, other));
   }
 
   @override
   int get hashCode {
-    return SourceMapper._guard((c) => c.hash(this));
+    return SourceMapper.ensureInitialized().hashValue(this as Source);
   }
 }
 

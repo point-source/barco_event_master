@@ -1,7 +1,8 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element
+// ignore_for_file: unused_element, unnecessary_cast
+// ignore_for_file: strict_raw_type, inference_failure_on_untyped_parameter
 
 part of 'destination.dart';
 
@@ -16,11 +17,6 @@ class DestinationsMapper extends ClassMapperBase<Destinations> {
       AuxDestinationMapper.ensureInitialized();
     }
     return _instance!;
-  }
-
-  static T _guard<T>(T Function(MapperContainer) fn) {
-    ensureInitialized();
-    return fn(MapperContainer.globals);
   }
 
   @override
@@ -53,40 +49,45 @@ class DestinationsMapper extends ClassMapperBase<Destinations> {
   final Function instantiate = _instantiate;
 
   static Destinations fromMap(Map<String, dynamic> map) {
-    return _guard((c) => c.fromMap<Destinations>(map));
+    return ensureInitialized().decodeMap<Destinations>(map);
   }
 
   static Destinations fromJson(String json) {
-    return _guard((c) => c.fromJson<Destinations>(json));
+    return ensureInitialized().decodeJson<Destinations>(json);
   }
 }
 
 mixin DestinationsMappable {
   String toJson() {
-    return DestinationsMapper._guard((c) => c.toJson(this as Destinations));
+    return DestinationsMapper.ensureInitialized()
+        .encodeJson<Destinations>(this as Destinations);
   }
 
   Map<String, dynamic> toMap() {
-    return DestinationsMapper._guard((c) => c.toMap(this as Destinations));
+    return DestinationsMapper.ensureInitialized()
+        .encodeMap<Destinations>(this as Destinations);
   }
 
   DestinationsCopyWith<Destinations, Destinations, Destinations> get copyWith =>
       _DestinationsCopyWithImpl(this as Destinations, $identity, $identity);
   @override
   String toString() {
-    return DestinationsMapper._guard((c) => c.asString(this));
+    return DestinationsMapper.ensureInitialized()
+        .stringifyValue(this as Destinations);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (runtimeType == other.runtimeType &&
-            DestinationsMapper._guard((c) => c.isEqual(this, other)));
+            DestinationsMapper.ensureInitialized()
+                .isValueEqual(this as Destinations, other));
   }
 
   @override
   int get hashCode {
-    return DestinationsMapper._guard((c) => c.hash(this));
+    return DestinationsMapper.ensureInitialized()
+        .hashValue(this as Destinations);
   }
 }
 
@@ -148,121 +149,6 @@ class _DestinationsCopyWithImpl<$R, $Out>
       _DestinationsCopyWithImpl($value, $cast, t);
 }
 
-class AuxDestinationMapper extends ClassMapperBase<AuxDestination> {
-  AuxDestinationMapper._();
-
-  static AuxDestinationMapper? _instance;
-  static AuxDestinationMapper ensureInitialized() {
-    if (_instance == null) {
-      MapperContainer.globals.use(_instance = AuxDestinationMapper._());
-    }
-    return _instance!;
-  }
-
-  static T _guard<T>(T Function(MapperContainer) fn) {
-    ensureInitialized();
-    return fn(MapperContainer.globals);
-  }
-
-  @override
-  final String id = 'AuxDestination';
-
-  static int _$id(AuxDestination v) => v.id;
-  static const Field<AuxDestination, int> _f$id = Field('id', _$id);
-  static int _$auxStreamMode(AuxDestination v) => v.auxStreamMode;
-  static const Field<AuxDestination, int> _f$auxStreamMode =
-      Field('auxStreamMode', _$auxStreamMode, key: 'AuxStreamMode');
-
-  @override
-  final Map<Symbol, Field<AuxDestination, dynamic>> fields = const {
-    #id: _f$id,
-    #auxStreamMode: _f$auxStreamMode,
-  };
-
-  static AuxDestination _instantiate(DecodingData data) {
-    return AuxDestination(
-        id: data.dec(_f$id), auxStreamMode: data.dec(_f$auxStreamMode));
-  }
-
-  @override
-  final Function instantiate = _instantiate;
-
-  static AuxDestination fromMap(Map<String, dynamic> map) {
-    return _guard((c) => c.fromMap<AuxDestination>(map));
-  }
-
-  static AuxDestination fromJson(String json) {
-    return _guard((c) => c.fromJson<AuxDestination>(json));
-  }
-}
-
-mixin AuxDestinationMappable {
-  String toJson() {
-    return AuxDestinationMapper._guard((c) => c.toJson(this as AuxDestination));
-  }
-
-  Map<String, dynamic> toMap() {
-    return AuxDestinationMapper._guard((c) => c.toMap(this as AuxDestination));
-  }
-
-  AuxDestinationCopyWith<AuxDestination, AuxDestination, AuxDestination>
-      get copyWith => _AuxDestinationCopyWithImpl(
-          this as AuxDestination, $identity, $identity);
-  @override
-  String toString() {
-    return AuxDestinationMapper._guard((c) => c.asString(this));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (runtimeType == other.runtimeType &&
-            AuxDestinationMapper._guard((c) => c.isEqual(this, other)));
-  }
-
-  @override
-  int get hashCode {
-    return AuxDestinationMapper._guard((c) => c.hash(this));
-  }
-}
-
-extension AuxDestinationValueCopy<$R, $Out>
-    on ObjectCopyWith<$R, AuxDestination, $Out> {
-  AuxDestinationCopyWith<$R, AuxDestination, $Out> get $asAuxDestination =>
-      $base.as((v, t, t2) => _AuxDestinationCopyWithImpl(v, t, t2));
-}
-
-abstract class AuxDestinationCopyWith<$R, $In extends AuxDestination, $Out>
-    implements ClassCopyWith<$R, $In, $Out> {
-  $R call({int? id, int? auxStreamMode});
-  AuxDestinationCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
-      Then<$Out2, $R2> t);
-}
-
-class _AuxDestinationCopyWithImpl<$R, $Out>
-    extends ClassCopyWithBase<$R, AuxDestination, $Out>
-    implements AuxDestinationCopyWith<$R, AuxDestination, $Out> {
-  _AuxDestinationCopyWithImpl(super.value, super.then, super.then2);
-
-  @override
-  late final ClassMapperBase<AuxDestination> $mapper =
-      AuxDestinationMapper.ensureInitialized();
-  @override
-  $R call({int? id, int? auxStreamMode}) => $apply(FieldCopyWithData({
-        if (id != null) #id: id,
-        if (auxStreamMode != null) #auxStreamMode: auxStreamMode
-      }));
-  @override
-  AuxDestination $make(CopyWithData data) => AuxDestination(
-      id: data.get(#id, or: $value.id),
-      auxStreamMode: data.get(#auxStreamMode, or: $value.auxStreamMode));
-
-  @override
-  AuxDestinationCopyWith<$R2, AuxDestination, $Out2> $chain<$R2, $Out2>(
-          Then<$Out2, $R2> t) =>
-      _AuxDestinationCopyWithImpl($value, $cast, t);
-}
-
 class ScreenDestinationMapper extends ClassMapperBase<ScreenDestination> {
   ScreenDestinationMapper._();
 
@@ -273,11 +159,6 @@ class ScreenDestinationMapper extends ClassMapperBase<ScreenDestination> {
       DestOutMapCollMapper.ensureInitialized();
     }
     return _instance!;
-  }
-
-  static T _guard<T>(T Function(MapperContainer) fn) {
-    ensureInitialized();
-    return fn(MapperContainer.globals);
   }
 
   @override
@@ -327,23 +208,23 @@ class ScreenDestinationMapper extends ClassMapperBase<ScreenDestination> {
   final Function instantiate = _instantiate;
 
   static ScreenDestination fromMap(Map<String, dynamic> map) {
-    return _guard((c) => c.fromMap<ScreenDestination>(map));
+    return ensureInitialized().decodeMap<ScreenDestination>(map);
   }
 
   static ScreenDestination fromJson(String json) {
-    return _guard((c) => c.fromJson<ScreenDestination>(json));
+    return ensureInitialized().decodeJson<ScreenDestination>(json);
   }
 }
 
 mixin ScreenDestinationMappable {
   String toJson() {
-    return ScreenDestinationMapper._guard(
-        (c) => c.toJson(this as ScreenDestination));
+    return ScreenDestinationMapper.ensureInitialized()
+        .encodeJson<ScreenDestination>(this as ScreenDestination);
   }
 
   Map<String, dynamic> toMap() {
-    return ScreenDestinationMapper._guard(
-        (c) => c.toMap(this as ScreenDestination));
+    return ScreenDestinationMapper.ensureInitialized()
+        .encodeMap<ScreenDestination>(this as ScreenDestination);
   }
 
   ScreenDestinationCopyWith<ScreenDestination, ScreenDestination,
@@ -352,19 +233,22 @@ mixin ScreenDestinationMappable {
           this as ScreenDestination, $identity, $identity);
   @override
   String toString() {
-    return ScreenDestinationMapper._guard((c) => c.asString(this));
+    return ScreenDestinationMapper.ensureInitialized()
+        .stringifyValue(this as ScreenDestination);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (runtimeType == other.runtimeType &&
-            ScreenDestinationMapper._guard((c) => c.isEqual(this, other)));
+            ScreenDestinationMapper.ensureInitialized()
+                .isValueEqual(this as ScreenDestination, other));
   }
 
   @override
   int get hashCode {
-    return ScreenDestinationMapper._guard((c) => c.hash(this));
+    return ScreenDestinationMapper.ensureInitialized()
+        .hashValue(this as ScreenDestination);
   }
 }
 
@@ -447,11 +331,6 @@ class DestOutMapCollMapper extends ClassMapperBase<DestOutMapColl> {
     return _instance!;
   }
 
-  static T _guard<T>(T Function(MapperContainer) fn) {
-    ensureInitialized();
-    return fn(MapperContainer.globals);
-  }
-
   @override
   final String id = 'DestOutMapColl';
 
@@ -477,21 +356,23 @@ class DestOutMapCollMapper extends ClassMapperBase<DestOutMapColl> {
   final Function instantiate = _instantiate;
 
   static DestOutMapColl fromMap(Map<String, dynamic> map) {
-    return _guard((c) => c.fromMap<DestOutMapColl>(map));
+    return ensureInitialized().decodeMap<DestOutMapColl>(map);
   }
 
   static DestOutMapColl fromJson(String json) {
-    return _guard((c) => c.fromJson<DestOutMapColl>(json));
+    return ensureInitialized().decodeJson<DestOutMapColl>(json);
   }
 }
 
 mixin DestOutMapCollMappable {
   String toJson() {
-    return DestOutMapCollMapper._guard((c) => c.toJson(this as DestOutMapColl));
+    return DestOutMapCollMapper.ensureInitialized()
+        .encodeJson<DestOutMapColl>(this as DestOutMapColl);
   }
 
   Map<String, dynamic> toMap() {
-    return DestOutMapCollMapper._guard((c) => c.toMap(this as DestOutMapColl));
+    return DestOutMapCollMapper.ensureInitialized()
+        .encodeMap<DestOutMapColl>(this as DestOutMapColl);
   }
 
   DestOutMapCollCopyWith<DestOutMapColl, DestOutMapColl, DestOutMapColl>
@@ -499,19 +380,22 @@ mixin DestOutMapCollMappable {
           this as DestOutMapColl, $identity, $identity);
   @override
   String toString() {
-    return DestOutMapCollMapper._guard((c) => c.asString(this));
+    return DestOutMapCollMapper.ensureInitialized()
+        .stringifyValue(this as DestOutMapColl);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (runtimeType == other.runtimeType &&
-            DestOutMapCollMapper._guard((c) => c.isEqual(this, other)));
+            DestOutMapCollMapper.ensureInitialized()
+                .isValueEqual(this as DestOutMapColl, other));
   }
 
   @override
   int get hashCode {
-    return DestOutMapCollMapper._guard((c) => c.hash(this));
+    return DestOutMapCollMapper.ensureInitialized()
+        .hashValue(this as DestOutMapColl);
   }
 }
 
@@ -569,11 +453,6 @@ class DestOutMapMapper extends ClassMapperBase<DestOutMap> {
     return _instance!;
   }
 
-  static T _guard<T>(T Function(MapperContainer) fn) {
-    ensureInitialized();
-    return fn(MapperContainer.globals);
-  }
-
   @override
   final String id = 'DestOutMap';
 
@@ -624,40 +503,44 @@ class DestOutMapMapper extends ClassMapperBase<DestOutMap> {
   final Function instantiate = _instantiate;
 
   static DestOutMap fromMap(Map<String, dynamic> map) {
-    return _guard((c) => c.fromMap<DestOutMap>(map));
+    return ensureInitialized().decodeMap<DestOutMap>(map);
   }
 
   static DestOutMap fromJson(String json) {
-    return _guard((c) => c.fromJson<DestOutMap>(json));
+    return ensureInitialized().decodeJson<DestOutMap>(json);
   }
 }
 
 mixin DestOutMapMappable {
   String toJson() {
-    return DestOutMapMapper._guard((c) => c.toJson(this as DestOutMap));
+    return DestOutMapMapper.ensureInitialized()
+        .encodeJson<DestOutMap>(this as DestOutMap);
   }
 
   Map<String, dynamic> toMap() {
-    return DestOutMapMapper._guard((c) => c.toMap(this as DestOutMap));
+    return DestOutMapMapper.ensureInitialized()
+        .encodeMap<DestOutMap>(this as DestOutMap);
   }
 
   DestOutMapCopyWith<DestOutMap, DestOutMap, DestOutMap> get copyWith =>
       _DestOutMapCopyWithImpl(this as DestOutMap, $identity, $identity);
   @override
   String toString() {
-    return DestOutMapMapper._guard((c) => c.asString(this));
+    return DestOutMapMapper.ensureInitialized()
+        .stringifyValue(this as DestOutMap);
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (runtimeType == other.runtimeType &&
-            DestOutMapMapper._guard((c) => c.isEqual(this, other)));
+            DestOutMapMapper.ensureInitialized()
+                .isValueEqual(this as DestOutMap, other));
   }
 
   @override
   int get hashCode {
-    return DestOutMapMapper._guard((c) => c.hash(this));
+    return DestOutMapMapper.ensureInitialized().hashValue(this as DestOutMap);
   }
 }
 
@@ -720,4 +603,119 @@ class _DestOutMapCopyWithImpl<$R, $Out>
   DestOutMapCopyWith<$R2, DestOutMap, $Out2> $chain<$R2, $Out2>(
           Then<$Out2, $R2> t) =>
       _DestOutMapCopyWithImpl($value, $cast, t);
+}
+
+class AuxDestinationMapper extends ClassMapperBase<AuxDestination> {
+  AuxDestinationMapper._();
+
+  static AuxDestinationMapper? _instance;
+  static AuxDestinationMapper ensureInitialized() {
+    if (_instance == null) {
+      MapperContainer.globals.use(_instance = AuxDestinationMapper._());
+    }
+    return _instance!;
+  }
+
+  @override
+  final String id = 'AuxDestination';
+
+  static int _$id(AuxDestination v) => v.id;
+  static const Field<AuxDestination, int> _f$id = Field('id', _$id);
+  static int _$auxStreamMode(AuxDestination v) => v.auxStreamMode;
+  static const Field<AuxDestination, int> _f$auxStreamMode =
+      Field('auxStreamMode', _$auxStreamMode, key: 'AuxStreamMode');
+
+  @override
+  final Map<Symbol, Field<AuxDestination, dynamic>> fields = const {
+    #id: _f$id,
+    #auxStreamMode: _f$auxStreamMode,
+  };
+
+  static AuxDestination _instantiate(DecodingData data) {
+    return AuxDestination(
+        id: data.dec(_f$id), auxStreamMode: data.dec(_f$auxStreamMode));
+  }
+
+  @override
+  final Function instantiate = _instantiate;
+
+  static AuxDestination fromMap(Map<String, dynamic> map) {
+    return ensureInitialized().decodeMap<AuxDestination>(map);
+  }
+
+  static AuxDestination fromJson(String json) {
+    return ensureInitialized().decodeJson<AuxDestination>(json);
+  }
+}
+
+mixin AuxDestinationMappable {
+  String toJson() {
+    return AuxDestinationMapper.ensureInitialized()
+        .encodeJson<AuxDestination>(this as AuxDestination);
+  }
+
+  Map<String, dynamic> toMap() {
+    return AuxDestinationMapper.ensureInitialized()
+        .encodeMap<AuxDestination>(this as AuxDestination);
+  }
+
+  AuxDestinationCopyWith<AuxDestination, AuxDestination, AuxDestination>
+      get copyWith => _AuxDestinationCopyWithImpl(
+          this as AuxDestination, $identity, $identity);
+  @override
+  String toString() {
+    return AuxDestinationMapper.ensureInitialized()
+        .stringifyValue(this as AuxDestination);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (runtimeType == other.runtimeType &&
+            AuxDestinationMapper.ensureInitialized()
+                .isValueEqual(this as AuxDestination, other));
+  }
+
+  @override
+  int get hashCode {
+    return AuxDestinationMapper.ensureInitialized()
+        .hashValue(this as AuxDestination);
+  }
+}
+
+extension AuxDestinationValueCopy<$R, $Out>
+    on ObjectCopyWith<$R, AuxDestination, $Out> {
+  AuxDestinationCopyWith<$R, AuxDestination, $Out> get $asAuxDestination =>
+      $base.as((v, t, t2) => _AuxDestinationCopyWithImpl(v, t, t2));
+}
+
+abstract class AuxDestinationCopyWith<$R, $In extends AuxDestination, $Out>
+    implements ClassCopyWith<$R, $In, $Out> {
+  $R call({int? id, int? auxStreamMode});
+  AuxDestinationCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
+      Then<$Out2, $R2> t);
+}
+
+class _AuxDestinationCopyWithImpl<$R, $Out>
+    extends ClassCopyWithBase<$R, AuxDestination, $Out>
+    implements AuxDestinationCopyWith<$R, AuxDestination, $Out> {
+  _AuxDestinationCopyWithImpl(super.value, super.then, super.then2);
+
+  @override
+  late final ClassMapperBase<AuxDestination> $mapper =
+      AuxDestinationMapper.ensureInitialized();
+  @override
+  $R call({int? id, int? auxStreamMode}) => $apply(FieldCopyWithData({
+        if (id != null) #id: id,
+        if (auxStreamMode != null) #auxStreamMode: auxStreamMode
+      }));
+  @override
+  AuxDestination $make(CopyWithData data) => AuxDestination(
+      id: data.get(#id, or: $value.id),
+      auxStreamMode: data.get(#auxStreamMode, or: $value.auxStreamMode));
+
+  @override
+  AuxDestinationCopyWith<$R2, AuxDestination, $Out2> $chain<$R2, $Out2>(
+          Then<$Out2, $R2> t) =>
+      _AuxDestinationCopyWithImpl($value, $cast, t);
 }

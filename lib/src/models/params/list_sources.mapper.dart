@@ -1,7 +1,8 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element
+// ignore_for_file: unused_element, unnecessary_cast
+// ignore_for_file: strict_raw_type, inference_failure_on_untyped_parameter
 
 part of 'list_sources.dart';
 
@@ -47,6 +48,6 @@ class SourceTypeMapper extends EnumMapper<SourceType> {
 extension SourceTypeMapperExtension on SourceType {
   dynamic toValue() {
     SourceTypeMapper.ensureInitialized();
-    return MapperContainer.globals.toValue(this);
+    return MapperContainer.globals.toValue<SourceType>(this);
   }
 }
